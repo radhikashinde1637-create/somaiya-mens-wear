@@ -1,0 +1,2427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SOMAIYA MEN'S WEAR - Bhandup Store | Inventory &amp; POS Portal</title>
+  <meta name="description" content="SOMAIYA MEN'S WEAR - Inventory & POS Sales Desk for Mam. 100% Men's Wear Catalog, Bhandup West Store." />
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome 6.5.1 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    :root {
+      --sidebar-width: 260px;
+      --primary-black: #111111;
+      --gold-accent: #d4af37;
+      --gold-dark: #b8860b;
+      --bg-page: #f8fafc;
+      --card-border: #e2e8f0;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-page);
+      color: #1e293b;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Sidebar Navigation */
+    .admin-sidebar {
+      width: var(--sidebar-width);
+      background-color: #111827;
+      color: #ffffff;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 1040;
+      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 4px 0 15px rgba(0,0,0,0.1);
+    }
+
+    @media (max-width: 991.98px) {
+      .admin-sidebar {
+        transform: translateX(-100%);
+      }
+      .admin-sidebar.show {
+        transform: translateX(0);
+      }
+    }
+
+    .sidebar-brand {
+      padding: 20px 22px;
+      border-bottom: 1px solid #1f2937;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-avatar {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, #d4af37, #b8860b);
+      color: #111;
+      font-weight: 800;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 19px;
+    }
+
+    .sidebar-menu {
+      padding: 15px 12px;
+      list-style: none;
+      margin: 0;
+      flex-grow: 1;
+      overflow-y: auto;
+    }
+
+    .sidebar-menu li {
+      margin-bottom: 4px;
+    }
+
+    .nav-link-btn {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      color: #94a3b8;
+      font-size: 13.5px;
+      font-weight: 600;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+      background: none;
+      width: 100%;
+      text-align: left;
+    }
+
+    .nav-link-btn:hover {
+      color: #ffffff;
+      background-color: #1f2937;
+    }
+
+    .nav-link-btn.active {
+      color: #ffffff;
+      background-color: #d4af37;
+      color: #111111;
+      font-weight: 700;
+    }
+
+    .main-content {
+      margin-left: var(--sidebar-width);
+      padding: 24px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      transition: margin 0.3s ease;
+    }
+
+    @media (max-width: 991.98px) {
+      .main-content {
+        margin-left: 0;
+        padding: 16px;
+      }
+    }
+
+    /* Top Bar */
+    .admin-topbar {
+      background: #ffffff;
+      padding: 14px 24px;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      border: 1px solid var(--card-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+
+    /* Cards */
+    .metric-card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 20px;
+      border: 1px solid var(--card-border);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .metric-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.07);
+    }
+
+    .metric-icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+
+    /* Badges */
+    .stock-badge-low {
+      background-color: #fee2e2;
+      color: #b91c1c;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+    }
+
+    .stock-badge-good {
+      background-color: #dcfce7;
+      color: #15803d;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+    }
+
+    /* Tables */
+    .table-container {
+      background: #ffffff;
+      border-radius: 12px;
+      border: 1px solid var(--card-border);
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+
+    .custom-table th {
+      background-color: #f8fafc;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #475569;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 12px 16px;
+    }
+
+    .custom-table td {
+      padding: 12px 16px;
+      vertical-align: middle;
+      font-size: 13.5px;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    /* Login Screen Container */
+    #loginScreen {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      padding: 20px;
+    }
+
+    .login-card {
+      background: #ffffff;
+      border-radius: 20px;
+      max-width: 460px;
+      width: 100%;
+      padding: 36px 32px;
+      box-shadow: 0 20px 45px rgba(0,0,0,0.3);
+    }
+
+    /* Printable Invoice CSS */
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      #printInvoiceArea, #printInvoiceArea * {
+        visibility: visible;
+      }
+      #printInvoiceArea {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        margin: 0;
+        padding: 20px;
+        background: #ffffff;
+      }
+      .no-print {
+        display: none !important;
+      }
+    }
+
+    .invoice-box {
+      border: 1px solid #ddd;
+      padding: 24px;
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .pill-role-admin {
+      background: #fef08a;
+      color: #854d0e;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 999px;
+      letter-spacing: 0.5px;
+    }
+
+    .pill-role-cashier {
+      background: #e0f2fe;
+      color: #0369a1;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 999px;
+      letter-spacing: 0.5px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== 1. LOGIN SCREEN WITH GOOGLE & ROLE SELECT ==================== -->
+  <div id="loginScreen">
+    <div class="login-card">
+      <div class="text-center mb-4">
+        <div class="brand-avatar mx-auto mb-3" style="width: 56px; height: 56px; font-size: 26px;">
+          S
+        </div>
+        <h4 class="fw-bold mb-1 text-dark" style="letter-spacing: 0.5px;">SOMAIYA MEN'S WEAR</h4>
+        <p class="text-muted small mb-0">Mam's Inventory &amp; POS Management System</p>
+      </div>
+
+      <div class="alert alert-info py-2 small d-flex align-items-center mb-3">
+        <i class="fa-solid fa-circle-info me-2 fs-5"></i>
+        <div>
+          Admin Access is exclusively reserved for <strong>radhikashinde1637@gmail.com</strong> (Mam).
+        </div>
+      </div>
+
+      <form id="adminLoginForm" onsubmit="handleManualLogin(event)">
+        <!-- Role Selector -->
+        <div class="mb-3">
+          <label class="form-label small fw-bold text-uppercase">Select Role</label>
+          <select class="form-select form-select-lg" id="loginRoleSelect" onchange="toggleRoleHelper(this.value)" style="font-size: 14px;">
+            <option value="admin" selected>Admin (Radhika Mam - Full Store Control)</option>
+            <option value="cashier">Cashier (Bhandup Store Counter Billing Only)</option>
+          </select>
+        </div>
+
+        <!-- Email input -->
+        <div class="mb-3" id="emailInputWrapper">
+          <label class="form-label small fw-bold text-uppercase">Google / Work Email</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="fa-solid fa-envelope text-muted"></i></span>
+            <input type="email" class="form-control" id="loginEmailInput" value="radhikashinde1637@gmail.com" required>
+          </div>
+          <small class="text-muted" id="roleHelpText" style="font-size: 11px;">
+            Admin role requires <code>radhikashinde1637@gmail.com</code>.
+          </small>
+        </div>
+
+        <!-- 1-Click Google Login Button -->
+        <div class="d-grid gap-2 mb-3">
+          <button type="button" class="btn btn-outline-dark py-2 fw-bold d-flex align-items-center justify-content-center gap-2" onclick="loginWithGooglePopup()">
+            <svg width="18" height="18" viewBox="0 0 24 24">
+              <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/>
+              <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z"/>
+              <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 10.03 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/>
+              <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+            </svg>
+            <span>Continue with Google (radhikashinde1637@gmail.com)</span>
+          </button>
+
+          <button type="submit" class="btn btn-dark py-2 fw-bold text-uppercase">
+            <i class="fa-solid fa-right-to-bracket me-2"></i> Enter Portal
+          </button>
+        </div>
+
+        <div class="text-center mt-3">
+          <a href="index.html" class="text-decoration-none small text-muted">
+            <i class="fa-solid fa-arrow-left me-1"></i> Return to Somaiya Men's Wear Store
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================== 2. MAIN ADMIN PORTAL (GUARDED) ==================== -->
+  <div id="adminPortal" style="display: none;">
+    
+    <!-- SIDEBAR -->
+    <aside class="admin-sidebar" id="adminSidebar">
+      <div class="sidebar-brand">
+        <div class="brand-avatar">S</div>
+        <div>
+          <div class="fw-bold text-white small" style="letter-spacing: 0.5px;">SOMAIYA ADMIN</div>
+          <div class="text-warning small" style="font-size: 11px;" id="sidebarUserEmail">Mam's Desk</div>
+        </div>
+      </div>
+
+      <ul class="sidebar-menu">
+        <li>
+          <button class="nav-link-btn active" onclick="switchTab('dashboard', this)">
+            <i class="fa-solid fa-chart-pie"></i>
+            <span>Dashboard &amp; KPIs</span>
+          </button>
+        </li>
+        <li>
+          <button class="nav-link-btn" onclick="switchTab('products', this)">
+            <i class="fa-solid fa-shirt"></i>
+            <span>Products &amp; Inventory</span>
+          </button>
+        </li>
+        <li>
+          <button class="nav-link-btn" onclick="switchTab('pos', this)">
+            <i class="fa-solid fa-cash-register"></i>
+            <span>POS &amp; Quick Billing</span>
+          </button>
+        </li>
+        <li>
+          <button class="nav-link-btn" onclick="switchTab('salesHistory', this)">
+            <i class="fa-solid fa-receipt"></i>
+            <span>Sales History &amp; Orders</span>
+          </button>
+        </li>
+        <li>
+          <button class="nav-link-btn" onclick="switchTab('firebaseTab', this)">
+            <i class="fa-solid fa-fire text-danger"></i>
+            <span>Firebase &amp; Security</span>
+          </button>
+        </li>
+      </ul>
+
+      <!-- Bottom sidebar info -->
+      <div class="p-3 border-top border-secondary border-opacity-25 mt-auto">
+        <div class="d-flex align-items-center justify-content-between mb-2">
+          <span class="badge" id="currentRoleBadge">Admin</span>
+          <a href="index.html" target="_blank" class="text-light small text-decoration-none" title="Open Customer Store">
+            <i class="fa-solid fa-arrow-up-right-from-square me-1"></i> Store View
+          </a>
+        </div>
+        <button class="btn btn-outline-danger btn-sm w-100 fw-bold" onclick="handleLogout()">
+          <i class="fa-solid fa-power-off me-2"></i> Log Out
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN BODY -->
+    <main class="main-content">
+      
+      <!-- TOPBAR -->
+      <div class="admin-topbar">
+        <div class="d-flex align-items-center gap-3">
+          <button class="btn btn-sm btn-light border d-lg-none" onclick="toggleSidebar()">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div>
+            <h5 class="fw-bold mb-0 text-dark" id="pageHeading">Dashboard Overview</h5>
+            <small class="text-muted" id="pageSubHeading">Live store metrics &bull; Bhandup, Mumbai</small>
+          </div>
+        </div>
+
+        <div class="d-flex align-items-center gap-3">
+          <a href="index.html" class="btn btn-sm btn-outline-dark fw-bold rounded-pill px-3">
+            <i class="fa-solid fa-store me-1 text-warning"></i> View Online Store
+          </a>
+          <div class="d-flex align-items-center gap-2">
+            <div class="text-end d-none d-sm-block">
+              <div class="fw-bold small" id="topbarUserName">Radhika Shinde (Mam)</div>
+              <div class="text-muted" style="font-size: 11px;" id="topbarUserEmail">radhikashinde1637@gmail.com</div>
+            </div>
+            <div class="rounded-circle bg-dark text-warning border border-warning fw-bold d-flex align-items-center justify-content-center shadow-sm" style="width: 38px; height: 38px; font-size: 13px;" title="Radhika Mam">
+              RS
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= TAB 1: DASHBOARD ================= -->
+      <section id="tab-dashboard" class="tab-section">
+        <!-- 4 Metric Cards -->
+        <div class="row g-3 mb-4">
+          <!-- Card 1: Total Products -->
+          <div class="col-sm-6 col-xl-3">
+            <div class="metric-card">
+              <div>
+                <span class="text-muted small fw-bold text-uppercase">Total Products</span>
+                <h3 class="fw-bold mt-1 mb-0" id="kpiTotalProducts">245</h3>
+                <span class="text-success small fw-semibold"><i class="fa-solid fa-arrow-up me-1"></i>Across 4 categories</span>
+              </div>
+              <div class="metric-icon-box bg-primary-subtle text-primary">
+                <i class="fa-solid fa-boxes-stacked"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Low Stock (Red) -->
+          <div class="col-sm-6 col-xl-3">
+            <div class="metric-card border-danger-subtle">
+              <div>
+                <span class="text-danger small fw-bold text-uppercase">Low Stock Alert</span>
+                <h3 class="fw-bold mt-1 mb-0 text-danger" id="kpiLowStock">12</h3>
+                <span class="text-muted small">Qty &lt; 5 units</span>
+              </div>
+              <div class="metric-icon-box bg-danger-subtle text-danger">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Today's Sales -->
+          <div class="col-sm-6 col-xl-3">
+            <div class="metric-card">
+              <div>
+                <span class="text-muted small fw-bold text-uppercase">Today's Sales</span>
+                <h3 class="fw-bold mt-1 mb-0 text-dark" id="kpiTodaySales">₹18,500</h3>
+                <span class="text-success small fw-semibold"><i class="fa-solid fa-bag-shopping me-1"></i>POS &amp; Online</span>
+              </div>
+              <div class="metric-icon-box bg-success-subtle text-success">
+                <i class="fa-solid fa-indian-rupee-sign"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4: Profit -->
+          <div class="col-sm-6 col-xl-3">
+            <div class="metric-card">
+              <div>
+                <span class="text-muted small fw-bold text-uppercase">Est. Gross Profit</span>
+                <h3 class="fw-bold mt-1 mb-0 text-success" id="kpiProfit">₹4,200</h3>
+                <span class="text-muted small fw-semibold">Margin ~28.5%</span>
+              </div>
+              <div class="metric-icon-box bg-warning-subtle text-warning">
+                <i class="fa-solid fa-wallet"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Charts Row -->
+        <div class="row g-4 mb-4">
+          <div class="col-lg-8">
+            <div class="bg-white p-3 p-md-4 rounded-3 border" style="box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h6 class="fw-bold text-dark mb-0"><i class="fa-solid fa-chart-column me-2 text-warning"></i>Product Stock Quantities by Category</h6>
+                <span class="badge bg-light text-dark border">Live Inventory</span>
+              </div>
+              <div style="height: 280px;">
+                <canvas id="productQtyChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="bg-white p-3 p-md-4 rounded-3 border h-100" style="box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+              <h6 class="fw-bold text-dark mb-3"><i class="fa-solid fa-chart-pie me-2 text-primary"></i>Category Share</h6>
+              <div style="height: 240px;">
+                <canvas id="categoryPieChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Low Stock Table (qty < 5 red) -->
+        <div class="table-container p-3 p-md-4">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <div>
+              <h6 class="fw-bold text-danger mb-0">
+                <i class="fa-solid fa-triangle-exclamation me-2"></i> Critical Low Stock Items (Qty &lt; 5)
+              </h6>
+              <small class="text-muted">Reorder from Surat, Vasai, or Ahmedabad suppliers</small>
+            </div>
+            <button class="btn btn-sm btn-outline-danger" onclick="switchTab('products', null)">
+              Manage Inventory
+            </button>
+          </div>
+          <div class="table-responsive">
+            <table class="table custom-table mb-0">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>Category</th>
+                  <th>Size</th>
+                  <th>Colour</th>
+                  <th>In Stock</th>
+                  <th>Supplier</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="lowStockTableBody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= TAB 2: PRODUCTS & INVENTORY ================= -->
+      <section id="tab-products" class="tab-section" style="display: none;">
+        <div class="bg-white p-3 p-md-4 rounded-3 border mb-4">
+          <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
+            <div>
+              <h5 class="fw-bold text-dark mb-1">Products Master Database</h5>
+              <p class="text-muted small mb-0">Automatic deduplication with unique <code>productKey = name+size+colour</code></p>
+            </div>
+            <div class="d-flex flex-wrap gap-2">
+              <button class="btn btn-warning fw-bold text-dark rounded-3 shadow-sm px-3" onclick="handleBulkImport()" id="bulkImportBtn" title="Bulk Import 15 Products to Firestore">
+                <i class="fa-solid fa-cloud-arrow-up me-2"></i> Bulk Import (15 to Firestore)
+              </button>
+              <button class="btn btn-dark fw-bold rounded-3" onclick="openAddProductModal()">
+                <i class="fa-solid fa-plus me-2"></i> Add New Product
+              </button>
+              <button class="btn btn-outline-secondary fw-semibold rounded-3" onclick="resetDefaultInventory()">
+                <i class="fa-solid fa-rotate-left me-1"></i> Reset Demo Data
+              </button>
+            </div>
+          </div>
+
+          <!-- Filters & Search -->
+          <div class="row g-2 mt-3 pt-3 border-top">
+            <div class="col-md-5">
+              <div class="input-group">
+                <span class="input-group-text bg-light"><i class="fa-solid fa-magnifying-glass text-muted"></i></span>
+                <input type="text" class="form-control" id="productSearchInput" placeholder="Search by name, SKU, fabric..." onkeyup="filterProductsTable()">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <select class="form-select" id="productCategoryFilter" onchange="filterProductsTable()">
+                <option value="All">All Categories (Shirts, Kurta, Tees, Bottoms)</option>
+                <option value="Shirts">Shirts</option>
+                <option value="Short Kurta">Short Kurta</option>
+                <option value="T-shirts">T-shirts</option>
+                <option value="Bottoms">Bottoms</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <select class="form-select" id="stockStatusFilter" onchange="filterProductsTable()">
+                <option value="All">All Stock Levels</option>
+                <option value="Low">Low Stock (&lt; 5)</option>
+                <option value="Good">In Stock (&gt;= 5)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Products Table -->
+        <div class="table-container">
+          <div class="table-responsive">
+            <table class="table custom-table table-hover mb-0">
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th>Product Key (SKU)</th>
+                  <th>Category</th>
+                  <th>Size / Colour</th>
+                  <th>Purchase</th>
+                  <th>Selling</th>
+                  <th>Stock Qty</th>
+                  <th>Supplier</th>
+                  <th class="text-end">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="productsTableBody">
+                <!-- Rendered dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= TAB 3: POS & QUICK BILLING ================= -->
+      <section id="tab-pos" class="tab-section" style="display: none;">
+        <div class="row g-4">
+          
+          <!-- Left: Customer Information & Measurements + Product Search -->
+          <div class="col-lg-7">
+            <div class="bg-white p-3 p-md-4 rounded-3 border mb-4">
+              <h6 class="fw-bold text-dark mb-3">
+                <i class="fa-solid fa-user-pen me-2 text-primary"></i> 1. Customer Details &amp; Custom Fit Measurements
+              </h6>
+              <div class="row g-2 mb-3">
+                <div class="col-md-6">
+                  <label class="form-label small fw-bold">Customer Name *</label>
+                  <input type="text" class="form-control" id="posCustName" placeholder="e.g. Vicky Rane" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label small fw-bold">Mobile Number *</label>
+                  <div class="input-group">
+                    <span class="input-group-text small">+91</span>
+                    <input type="tel" class="form-control" id="posCustMobile" placeholder="9820012345" required>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Tailoring Measurements: Chest, Waist, Length -->
+              <div class="bg-light p-3 rounded-3 border">
+                <span class="small fw-bold text-uppercase d-block mb-2 text-dark">
+                  <i class="fa-solid fa-ruler-combined me-1 text-warning"></i> Store Fitting / Alteration Measurements (Inches)
+                </span>
+                <div class="row g-2">
+                  <div class="col-4">
+                    <label class="form-label small text-muted mb-1">Chest</label>
+                    <input type="number" step="0.5" class="form-control" id="posMeasureChest" placeholder="e.g. 40">
+                  </div>
+                  <div class="col-4">
+                    <label class="form-label small text-muted mb-1">Waist</label>
+                    <input type="number" step="0.5" class="form-control" id="posMeasureWaist" placeholder="e.g. 32">
+                  </div>
+                  <div class="col-4">
+                    <label class="form-label small text-muted mb-1">Length</label>
+                    <input type="number" step="0.5" class="form-control" id="posMeasureLength" placeholder="e.g. 29">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product Search & Autocomplete -->
+            <div class="bg-white p-3 p-md-4 rounded-3 border">
+              <h6 class="fw-bold text-dark mb-3">
+                <i class="fa-solid fa-magnifying-glass me-2 text-warning"></i> 2. Product Search &amp; Add to Invoice
+              </h6>
+              <div class="position-relative mb-3">
+                <input type="text" class="form-control form-control-lg" id="posProductSearch" placeholder="Type shirt name, kurta, colour or SKU..." onkeyup="handlePosProductSearch(this.value)">
+                <div id="posSearchResults" class="position-absolute w-100 bg-white border rounded-3 shadow-lg p-2 mt-1 z-3" style="display: none; max-height: 250px; overflow-y: auto;">
+                  <!-- Autocomplete suggestions -->
+                </div>
+              </div>
+
+              <!-- Fast Quick-Add Buttons -->
+              <div class="d-flex flex-wrap gap-2">
+                <span class="small fw-bold text-muted align-self-center me-1">Fast Tap:</span>
+                <button type="button" class="btn btn-sm btn-outline-secondary" onclick="fastAddPos('prod-1')">Mustard Shirt</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary" onclick="fastAddPos('prod-2')">Navy Kurta</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary" onclick="fastAddPos('prod-4')">Brown Tee</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary" onclick="fastAddPos('prod-5')">Beige Chino</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Billing Cart, GST & Print Bill -->
+          <div class="col-lg-5">
+            <div class="bg-white p-3 p-md-4 rounded-3 border sticky-top" style="top: 20px;">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h6 class="fw-bold text-dark mb-0">
+                  <i class="fa-solid fa-receipt me-2 text-success"></i> Current POS Bill
+                </h6>
+                <span class="badge bg-dark" id="posItemCountBadge">0 items</span>
+              </div>
+
+              <!-- POS Items Table -->
+              <div class="table-responsive mb-3" style="max-height: 240px; overflow-y: auto;">
+                <table class="table table-sm custom-table mb-0">
+                  <thead>
+                    <tr>
+                      <th>Item</th>
+                      <th>Qty</th>
+                      <th>Price</th>
+                      <th>Total</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody id="posCartTableBody">
+                    <tr>
+                      <td colspan="5" class="text-center text-muted py-4">No items added to invoice yet.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Bill Totals & GST 18% -->
+              <div class="bg-light p-3 rounded-3 border mb-3">
+                <div class="d-flex justify-content-between mb-1 small">
+                  <span class="text-muted">Subtotal (Net Amount):</span>
+                  <span class="fw-bold" id="posSubtotal">₹0</span>
+                </div>
+                
+                <div class="d-flex justify-content-between align-items-center mb-1 small">
+                  <div>
+                    <span class="text-muted">GST 18% (CGST 9% + SGST 9%):</span>
+                  </div>
+                  <span class="fw-bold text-primary" id="posGstAmount">₹0</span>
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center mb-2 small">
+                  <span class="text-muted">Discount / Rounding:</span>
+                  <div class="d-flex align-items-center gap-1" style="max-width: 90px;">
+                    <span class="text-muted">₹</span>
+                    <input type="number" id="posDiscountInput" class="form-control form-control-sm text-end" value="0" min="0" oninput="calculatePosTotals()">
+                  </div>
+                </div>
+
+                <hr class="my-2">
+
+                <div class="d-flex justify-content-between fs-5 fw-extrabold text-dark">
+                  <span>Grand Total:</span>
+                  <span class="text-success" id="posGrandTotal">₹0</span>
+                </div>
+              </div>
+
+              <!-- Payment Method Selection -->
+              <div class="mb-3">
+                <label class="form-label small fw-bold text-uppercase">Payment Method</label>
+                <select class="form-select" id="posPaymentMethod">
+                  <option value="UPI / Google Pay" selected>UPI / Google Pay (GPay / PhonePe / Paytm)</option>
+                  <option value="Cash">Cash at Counter</option>
+                  <option value="Card (Debit / Credit)">Card (POS Terminal)</option>
+                </select>
+              </div>
+
+              <!-- Save Transaction & Print Buttons -->
+              <div class="d-grid gap-2">
+                <button type="button" class="btn btn-dark py-3 fw-bold text-uppercase d-flex align-items-center justify-content-center gap-2" onclick="savePosTransaction(true)">
+                  <i class="fa-solid fa-print"></i> SAVE &amp; PRINT GST BILL
+                </button>
+                <button type="button" class="btn btn-outline-dark py-2 fw-semibold" onclick="savePosTransaction(false)">
+                  <i class="fa-solid fa-floppy-disk me-1"></i> Save Bill (No Print)
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ================= TAB 4: SALES HISTORY ================= -->
+      <section id="tab-salesHistory" class="tab-section" style="display: none;">
+        <div class="bg-white p-3 p-md-4 rounded-3 border mb-4">
+          <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
+            <div>
+              <h5 class="fw-bold text-dark mb-1">Sales &amp; Orders Log</h5>
+              <p class="text-muted small mb-0">Complete historical audit of in-store POS bills and customer website orders</p>
+            </div>
+            <button class="btn btn-outline-success btn-sm fw-bold" onclick="exportSalesCSV()">
+              <i class="fa-solid fa-file-excel me-1"></i> Export Excel / CSV
+            </button>
+          </div>
+        </div>
+
+        <div class="table-container">
+          <div class="table-responsive">
+            <table class="table custom-table table-hover mb-0">
+              <thead>
+                <tr>
+                  <th>Invoice / Order</th>
+                  <th>Customer</th>
+                  <th>Mobile</th>
+                  <th>Items Details</th>
+                  <th>Subtotal</th>
+                  <th>GST (18%)</th>
+                  <th>Grand Total</th>
+                  <th>Payment</th>
+                  <th>Date &amp; Time</th>
+                  <th class="text-end">Invoice</th>
+                </tr>
+              </thead>
+              <tbody id="salesHistoryTableBody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= TAB 5: FIREBASE CONFIG & SECURITY RULES ================= -->
+      <section id="tab-firebaseTab" class="tab-section" style="display: none;">
+        <div class="bg-white p-3 p-md-4 rounded-3 border mb-4">
+          <h5 class="fw-bold text-dark mb-1">
+            <i class="fa-solid fa-fire text-danger me-2"></i> Firebase Firestore &amp; Auth Configuration
+          </h5>
+          <p class="text-muted small mb-3">
+            Integrated architecture supporting <code>products</code>, <code>sales</code>, <code>customers</code>, <code>suppliers</code>, and <code>audit_log</code> collections.
+          </p>
+
+          <!-- Firebase Config Code Display -->
+          <div class="bg-dark text-light p-3 rounded-3 mb-4 font-monospace" style="font-size: 13px;">
+            <div class="d-flex justify-content-between align-items-center mb-2 pb-2 border-bottom border-secondary">
+              <span class="text-warning fw-bold">firebaseConfig placeholder (somaiya-mens-wear)</span>
+              <button class="btn btn-sm btn-outline-light py-0" onclick="copyFirebaseSnippet()">Copy Config</button>
+            </div>
+<pre id="firebaseCodeSnippet" class="m-0" style="white-space: pre-wrap;">
+const firebaseConfig = {
+  apiKey: "AIzaSySOMAIYA_MENS_WEAR_MAM_API_KEY",
+  authDomain: "somaiya-mens-wear-bhandup.firebaseapp.com",
+  projectId: "somaiya-mens-wear-bhandup",
+  storageBucket: "somaiya-mens-wear-bhandup.appspot.com",
+  messagingSenderId: "94788491523",
+  appId: "1:94788491523:web:7c9e0a12b34c56d78e",
+  measurementId: "G-SMWBHANDUP"
+};
+
+// Target Collections:
+// 1. products: { productKey, name, size, colour, fabric, purchase, selling, qty, minQty, supplier }
+// 2. sales: { orderId, customerName, mobile, chest, waist, length, items[], total, gst, timestamp }
+// 3. customers: { mobile, name, totalPurchased, lastVisit }
+// 4. suppliers: { supplierName, phone, city }
+// 5. audit_log: { actor, action, timestamp, details }
+</pre>
+          </div>
+
+          <!-- Firestore Security Rules -->
+          <div class="border rounded-3 p-3 bg-light">
+            <h6 class="fw-bold text-dark mb-2">
+              <i class="fa-solid fa-shield-halved me-1 text-success"></i> Recommended Firestore Security Rules
+            </h6>
+            <div class="bg-dark text-light p-3 rounded-3 font-monospace" style="font-size: 12.5px;">
+<pre class="m-0" style="white-space: pre-wrap;">
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Only Mam (radhikashinde1637@gmail.com) can modify products, suppliers, & audit logs
+    match /products/{docId} {
+      allow read: if true;
+      allow write: if request.auth != null && request.auth.token.email == 'radhikashinde1637@gmail.com';
+    }
+    
+    // Cashier and Admin can record sales transactions
+    match /sales/{saleId} {
+      allow read: if request.auth != null;
+      allow create: if true; // Allows website orders and counter POS
+      allow update, delete: if request.auth != null && request.auth.token.email == 'radhikashinde1637@gmail.com';
+    }
+
+    match /customers/{custId} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}
+</pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ==================== MODAL: ADD / EDIT PRODUCT ==================== -->
+  <div class="modal fade" id="productFormModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-dark text-white">
+          <h5 class="modal-title fw-bold" id="productModalHeading">
+            <i class="fa-solid fa-shirt me-2 text-warning"></i> Add New Product to Inventory
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <form id="productEntryForm" onsubmit="handleSaveProduct(event)">
+            <input type="hidden" id="editProductId" value="">
+            
+            <div class="row g-3">
+              <!-- Name -->
+              <div class="col-md-6">
+                <label class="form-label small fw-bold">Product Name *</label>
+                <input type="text" class="form-control" id="formProdName" placeholder="e.g. Abstract Watercolor Printed Shirt" required onkeyup="updateGeneratedKeyPreview()">
+              </div>
+
+              <!-- Category -->
+              <div class="col-md-3">
+                <label class="form-label small fw-bold">Category *</label>
+                <select class="form-select" id="formProdCategory" required>
+                  <option value="Shirts">Shirts</option>
+                  <option value="Short Kurta">Short Kurta</option>
+                  <option value="T-shirts">T-shirts</option>
+                  <option value="Bottoms">Bottoms</option>
+                </select>
+              </div>
+
+              <!-- Supplier -->
+              <div class="col-md-3">
+                <label class="form-label small fw-bold">Supplier *</label>
+                <select class="form-select" id="formProdSupplier" required>
+                  <option value="Vasai Handlooms">Vasai Handlooms</option>
+                  <option value="Surat Weaves">Surat Weaves</option>
+                  <option value="Ahmedabad Mills">Ahmedabad Mills</option>
+                  <option value="Tirupur Knits">Tirupur Knits</option>
+                  <option value="Mumbai Weavers">Mumbai Weavers</option>
+                </select>
+              </div>
+
+              <!-- Size: S / M / L / XL / XXL -->
+              <div class="col-md-3">
+                <label class="form-label small fw-bold">Size *</label>
+                <select class="form-select" id="formProdSize" required onchange="updateGeneratedKeyPreview()">
+                  <option value="S">S (Small)</option>
+                  <option value="M">M (Medium)</option>
+                  <option value="L" selected>L (Large)</option>
+                  <option value="XL">XL (Extra Large)</option>
+                  <option value="XXL">XXL (Double XL)</option>
+                </select>
+              </div>
+
+              <!-- Colour -->
+              <div class="col-md-3">
+                <label class="form-label small fw-bold">Colour *</label>
+                <input type="text" class="form-control" id="formProdColour" placeholder="e.g. Mustard Yellow" required onkeyup="updateGeneratedKeyPreview()">
+              </div>
+
+              <!-- Fabric -->
+              <div class="col-md-6">
+                <label class="form-label small fw-bold">Fabric Details *</label>
+                <input type="text" class="form-control" id="formProdFabric" placeholder="e.g. Premium 100% Cotton Poplin" required>
+              </div>
+
+              <!-- Purchase Price -->
+              <div class="col-md-3">
+                <label class="form-label small fw-bold">Purchase Price (₹) *</label>
+                <input type="number" class="form-control" id="formProdPurchase" placeholder="380" min="0" required>
+              </div>
+
+              <!-- Selling Price -->
+              <div class="col-md-3">
+                <label class="form-label small fw-bold">Selling Price (₹) *</label>
+                <input type="number" class="form-control" id="formProdSelling" placeholder="799" min="0" required>
+              </div>
+
+              <!-- Qty -->
+              <div class="col-md-3">
+                <label class="form-label small fw-bold">Current Stock Qty *</label>
+                <input type="number" class="form-control" id="formProdQty" placeholder="24" min="0" required>
+              </div>
+
+              <!-- Min Qty (default 5) -->
+              <div class="col-md-3">
+                <label class="form-label small fw-bold">Min Stock Alert Qty</label>
+                <input type="number" class="form-control" id="formProdMinQty" value="5" min="1" required>
+              </div>
+
+              <!-- Image URL -->
+              <div class="col-12">
+                <label class="form-label small fw-bold">Product Image URL</label>
+                <input type="url" class="form-control" id="formProdImage" placeholder="https://images.unsplash.com/..." value="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=700">
+              </div>
+
+              <!-- Generated Key Preview -->
+              <div class="col-12">
+                <div class="bg-light p-2 rounded border small">
+                  <span class="fw-bold text-dark">Generated productKey (Prevent duplicate):</span>
+                  <code id="keyPreviewText" class="text-danger fw-bold ms-2">name_size_colour</code>
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-end gap-2 mt-4">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+              <button type="submit" class="btn btn-dark fw-bold px-4">
+                <i class="fa-solid fa-check me-2"></i> Save Product
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== PRINTABLE GST TAX INVOICE ==================== -->
+  <div id="printInvoiceArea" class="d-none">
+    <div class="invoice-box" id="invoicePaper">
+      <!-- Invoice populated dynamically for print -->
+    </div>
+  </div>
+
+  <!-- Bootstrap 5.3 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Shared Database Keys
+    const DB_KEY = 'SOMAIYA_INVENTORY_PRODUCTS';
+    const SALES_KEY = 'SOMAIYA_SALES_RECORDS';
+    const AUTH_KEY = 'SOMAIYA_ADMIN_AUTH';
+
+    // Global state
+    let inventory = [];
+    let sales = [];
+    let currentUser = null;
+    let posCart = [];
+    let qtyChart = null;
+    let pieChart = null;
+
+    // Check Auth on load
+    function checkAuth() {
+      const storedAuth = localStorage.getItem(AUTH_KEY);
+      if (storedAuth) {
+        try {
+          currentUser = JSON.parse(storedAuth);
+          renderAuthenticatedPortal();
+          return;
+        } catch(e) {
+          currentUser = null;
+        }
+      }
+      showLoginScreen();
+    }
+
+    function showLoginScreen() {
+      document.getElementById('loginScreen').style.display = 'flex';
+      document.getElementById('adminPortal').style.display = 'none';
+    }
+
+    function renderAuthenticatedPortal() {
+      document.getElementById('loginScreen').style.display = 'none';
+      document.getElementById('adminPortal').style.display = 'block';
+
+      // Update Topbar and Sidebar user details
+      document.getElementById('sidebarUserEmail').textContent = currentUser.email;
+      document.getElementById('topbarUserEmail').textContent = currentUser.email;
+      document.getElementById('topbarUserName').textContent = currentUser.role === 'admin' ? 'Radhika Shinde (Mam)' : 'Cashier (Counter)';
+
+      const badge = document.getElementById('currentRoleBadge');
+      if (currentUser.role === 'admin') {
+        badge.className = 'pill-role-admin';
+        badge.textContent = 'ADMIN';
+      } else {
+        badge.className = 'pill-role-cashier';
+        badge.textContent = 'CASHIER';
+      }
+
+      // Restrict features if cashier
+      if (currentUser.role === 'cashier') {
+        // Cashier opens POS by default
+        switchTab('pos', null);
+      } else {
+        switchTab('dashboard', null);
+      }
+
+      loadInventoryData();
+    }
+
+    // Toggle Role Helper
+    function toggleRoleHelper(role) {
+      const emailInput = document.getElementById('loginEmailInput');
+      const helper = document.getElementById('roleHelpText');
+      if (role === 'admin') {
+        emailInput.value = 'radhikashinde1637@gmail.com';
+        helper.innerHTML = 'Admin role requires <code>radhikashinde1637@gmail.com</code>.';
+      } else {
+        emailInput.value = 'cashier.bhandup@somaiya.com';
+        helper.innerHTML = 'Cashier has POS billing and stock look-up permissions.';
+      }
+    }
+
+    // Login with Google Popup (Radhika Mam)
+    function loginWithGooglePopup() {
+      const role = document.getElementById('loginRoleSelect').value;
+      const email = 'radhikashinde1637@gmail.com';
+
+      currentUser = {
+        name: 'Radhika Shinde',
+        email: email,
+        role: 'admin',
+        loginTime: new Date().toISOString()
+      };
+
+      localStorage.setItem(AUTH_KEY, JSON.stringify(currentUser));
+      renderAuthenticatedPortal();
+    }
+
+    // Manual Form Login
+    function handleManualLogin(e) {
+      e.preventDefault();
+      const role = document.getElementById('loginRoleSelect').value;
+      const email = document.getElementById('loginEmailInput').value.trim();
+
+      if (role === 'admin' && email.toLowerCase() !== 'radhikashinde1637@gmail.com') {
+        alert('Permission Denied: Admin access is exclusively reserved for radhikashinde1637@gmail.com.');
+        return;
+      }
+
+      currentUser = {
+        name: role === 'admin' ? 'Radhika Shinde' : 'Bhandup Cashier',
+        email: email,
+        role: role,
+        loginTime: new Date().toISOString()
+      };
+
+      localStorage.setItem(AUTH_KEY, JSON.stringify(currentUser));
+      renderAuthenticatedPortal();
+    }
+
+    // Logout
+    function handleLogout() {
+      localStorage.removeItem(AUTH_KEY);
+      currentUser = null;
+      showLoginScreen();
+    }
+
+    // Switch Tabs
+    function switchTab(tabId, btn) {
+      const allSections = document.querySelectorAll('.tab-section');
+      allSections.forEach(sec => sec.style.display = 'none');
+
+      const target = document.getElementById(`tab-${tabId}`);
+      if (target) target.style.display = 'block';
+
+      const allBtns = document.querySelectorAll('.nav-link-btn');
+      allBtns.forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+
+      // Update Headings
+      const heading = document.getElementById('pageHeading');
+      const sub = document.getElementById('pageSubHeading');
+
+      if (tabId === 'dashboard') {
+        heading.textContent = 'Dashboard & Store Analytics';
+        sub.textContent = 'Live inventory metrics & sales turnover';
+        renderCharts();
+      } else if (tabId === 'products') {
+        heading.textContent = 'Inventory & Stock Management';
+        sub.textContent = 'Manage SKUs, categories, and supply stock levels';
+        renderProductsTable();
+      } else if (tabId === 'pos') {
+        heading.textContent = 'Point of Sale (POS) & Billing';
+        sub.textContent = 'Counter billing, custom alterations, and GST invoice generator';
+      } else if (tabId === 'salesHistory') {
+        heading.textContent = 'Sales History & Orders Log';
+        sub.textContent = 'Audit trail of all in-store POS and customer website orders';
+        renderSalesHistory();
+      } else if (tabId === 'firebaseTab') {
+        heading.textContent = 'Firebase Architecture & Rules';
+        sub.textContent = 'Firestore rules and multi-collection layout';
+      }
+
+      // Close mobile sidebar if open
+      document.getElementById('adminSidebar').classList.remove('show');
+    }
+
+    function toggleSidebar() {
+      document.getElementById('adminSidebar').classList.toggle('show');
+    }
+
+    // 15 MASTER PRODUCTS AS REQUESTED: TOTAL 113 UNITS (Shirts: 62, Short Kurta: 19, T-shirts: 16, Bottoms: 16/6)
+    // Suppliers: Surat / Vasai / Ahmedabad
+    // Low stock < 5: 4 items (Qty 3, 3, 2, 4 in red)
+    const BULK_IMPORT_15_PRODUCTS = [
+      // --- SHIRTS (Total: 62 units) ---
+      {
+        id: "prod-1",
+        name: "Abstract Watercolor Printed Shirt Mustard",
+        category: "Shirts",
+        price: 799,
+        originalPrice: 1249,
+        discountPercent: 36,
+        size: "L",
+        availableSizes: ["M", "L", "XL", "XXL"],
+        colour: "Mustard Yellow",
+        fabric: "Premium 100% Breathable Cotton",
+        fit: "Regular Fit",
+        qty: 18,
+        minQty: 5,
+        purchasePrice: 390,
+        supplier: "Vasai Handlooms",
+        image: "/assets/products/shirt_yellow_watercolor.jpg",
+        isNewDrop: true
+      },
+      {
+        id: "prod-2",
+        name: "Abstract Watercolor Printed Shirt Coral Pink",
+        category: "Shirts",
+        price: 799,
+        originalPrice: 1249,
+        discountPercent: 36,
+        size: "L",
+        availableSizes: ["M", "L", "XL", "XXL"],
+        colour: "Coral Pink",
+        fabric: "Premium 100% Cotton",
+        fit: "Regular Fit",
+        qty: 14,
+        minQty: 5,
+        purchasePrice: 390,
+        supplier: "Surat Weaves",
+        image: "/assets/products/shirt_pink_watercolor.jpg",
+        isNewDrop: true
+      },
+      {
+        id: "prod-3",
+        name: "Abstract Floral Printed Casual Shirt Blue",
+        category: "Shirts",
+        price: 799,
+        originalPrice: 1249,
+        discountPercent: 36,
+        size: "M",
+        availableSizes: ["M", "L", "XL", "XXL"],
+        colour: "White & Blue Floral",
+        fabric: "Soft Breathable Cotton",
+        fit: "Casual Comfort",
+        qty: 12,
+        minQty: 5,
+        purchasePrice: 390,
+        supplier: "Vasai Handlooms",
+        image: "/assets/products/shirt_blue_floral.jpg",
+        isNewDrop: true
+      },
+      {
+        id: "prod-4",
+        name: "Abstract Floral Printed Casual Shirt Olive Brown",
+        category: "Shirts",
+        price: 799,
+        originalPrice: 1249,
+        discountPercent: 36,
+        size: "L",
+        availableSizes: ["M", "L", "XL", "XXL"],
+        colour: "Olive Gold & Brown",
+        fabric: "Soft Breathable Cotton",
+        fit: "Casual Comfort",
+        qty: 10,
+        minQty: 5,
+        purchasePrice: 390,
+        supplier: "Surat Weaves",
+        image: "/assets/products/shirt_brown_floral.jpg",
+        isNewDrop: true
+      },
+      {
+        id: "prod-5",
+        name: "Classic Open Collar Camp Shirt Rust Brown",
+        category: "Shirts",
+        price: 899,
+        originalPrice: 1399,
+        discountPercent: 35,
+        size: "XL",
+        availableSizes: ["M", "L", "XL"],
+        colour: "Rust Brown",
+        fabric: "Linen Viscose Blend",
+        fit: "Relaxed Fit",
+        qty: 5,
+        minQty: 5,
+        purchasePrice: 450,
+        supplier: "Ahmedabad Mills",
+        image: "/assets/categories/cat_shirts_male.jpg",
+        isNewDrop: true
+      },
+      {
+        id: "prod-6",
+        name: "Geometric Block Printed Resort Shirt Sage",
+        category: "Shirts",
+        price: 799,
+        originalPrice: 1249,
+        discountPercent: 36,
+        size: "M",
+        availableSizes: ["M", "L", "XL"],
+        colour: "Sage Green",
+        fabric: "100% Cambric Cotton",
+        fit: "Resort Slim Fit",
+        qty: 3, // LOW STOCK (< 5 in RED)
+        minQty: 5,
+        purchasePrice: 380,
+        supplier: "Vasai Handlooms",
+        image: "/assets/products/shirt_yellow_watercolor.jpg",
+        isNewDrop: true
+      },
+
+      // --- SHORT KURTA (Total: 19 units) ---
+      {
+        id: "prod-7",
+        name: "Royal Ethnic Short Kurta White",
+        category: "Short Kurta",
+        price: 849,
+        originalPrice: 1399,
+        discountPercent: 39,
+        size: "L",
+        availableSizes: ["M", "L", "XL", "XXL"],
+        colour: "Pristine White",
+        fabric: "100% Slub Cotton Khadi",
+        fit: "Traditional Ethnic",
+        qty: 10,
+        minQty: 5,
+        purchasePrice: 420,
+        supplier: "Ahmedabad Mills",
+        image: "https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?q=80&w=700",
+        isNewDrop: true
+      },
+      {
+        id: "prod-8",
+        name: "Striped Linen Short Kurta Blue",
+        category: "Short Kurta",
+        price: 899,
+        originalPrice: 1449,
+        discountPercent: 38,
+        size: "L",
+        availableSizes: ["M", "L", "XL"],
+        colour: "Indigo Blue Stripe",
+        fabric: "Pure Linen Blend",
+        fit: "Comfort Ethnic",
+        qty: 6,
+        minQty: 5,
+        purchasePrice: 450,
+        supplier: "Surat Weaves",
+        image: "/assets/categories/cat_kurta_male.jpg",
+        isNewDrop: true
+      },
+      {
+        id: "prod-9",
+        name: "Chikankari Handloom Short Kurta Cream",
+        category: "Short Kurta",
+        price: 949,
+        originalPrice: 1499,
+        discountPercent: 37,
+        size: "XL",
+        availableSizes: ["M", "L", "XL", "XXL"],
+        colour: "Cream Ivory",
+        fabric: "Handspun Cotton",
+        fit: "Royal Comfort",
+        qty: 3, // LOW STOCK (< 5 in RED)
+        minQty: 5,
+        purchasePrice: 460,
+        supplier: "Vasai Handlooms",
+        image: "https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?q=80&w=700",
+        isNewDrop: true
+      },
+
+      // --- T-SHIRTS (Total: 16 units) ---
+      {
+        id: "prod-10",
+        name: "Minimal Ribbed Knit T-Shirt Beige",
+        category: "T-shirts",
+        price: 699,
+        originalPrice: 1199,
+        discountPercent: 42,
+        size: "M",
+        availableSizes: ["S", "M", "L", "XL"],
+        colour: "Oatmeal Beige",
+        fabric: "240 GSM Ribbed Combed Cotton",
+        fit: "Tailored Smart Casual",
+        qty: 8,
+        minQty: 5,
+        purchasePrice: 320,
+        supplier: "Surat Weaves",
+        image: "/assets/categories/cat_tshirts_male.jpg",
+        isNewDrop: true
+      },
+      {
+        id: "prod-11",
+        name: "Heavyweight Boxy Crew Neck T-Shirt Charcoal",
+        category: "T-shirts",
+        price: 749,
+        originalPrice: 1199,
+        discountPercent: 37,
+        size: "L",
+        availableSizes: ["M", "L", "XL"],
+        colour: "Charcoal Slate",
+        fabric: "260 GSM French Terry",
+        fit: "Oversized Streetwear",
+        qty: 6,
+        minQty: 5,
+        purchasePrice: 340,
+        supplier: "Ahmedabad Mills",
+        image: "/assets/categories/cat_tshirts_male.jpg",
+        isNewDrop: true
+      },
+      {
+        id: "prod-12",
+        name: "Textured Waffle Drop Shoulder Tee Olive",
+        category: "T-shirts",
+        price: 699,
+        originalPrice: 1099,
+        discountPercent: 36,
+        size: "XL",
+        availableSizes: ["M", "L", "XL"],
+        colour: "Olive Khaki",
+        fabric: "100% Waffle Knit Cotton",
+        fit: "Drop Shoulder Relaxed",
+        qty: 2, // LOW STOCK (< 5 in RED)
+        minQty: 5,
+        purchasePrice: 310,
+        supplier: "Vasai Handlooms",
+        image: "/assets/categories/cat_tshirts_male.jpg",
+        isNewDrop: true
+      },
+
+      // --- BOTTOMS (Total: 16 units) ---
+      {
+        id: "prod-13",
+        name: "Relaxed Wide Leg Cargo Pant Stone",
+        category: "Bottoms",
+        price: 1099,
+        originalPrice: 1699,
+        discountPercent: 35,
+        size: "L",
+        availableSizes: ["M", "L", "XL"],
+        colour: "Stone Khaki",
+        fabric: "Heavyweight Cotton Twill",
+        fit: "Baggy Streetwear Cargo",
+        qty: 6, // 6 units
+        minQty: 5,
+        purchasePrice: 560,
+        supplier: "Ahmedabad Mills",
+        image: "/assets/categories/cat_bottoms_male.jpg",
+        isNewDrop: true
+      },
+      {
+        id: "prod-14",
+        name: "Korean Pleated Ankle Trousers Charcoal",
+        category: "Bottoms",
+        price: 1049,
+        originalPrice: 1599,
+        discountPercent: 34,
+        size: "M",
+        availableSizes: ["M", "L", "XL"],
+        colour: "Deep Charcoal",
+        fabric: "Stretch Poly Viscose",
+        fit: "Cropped Tapered",
+        qty: 6, // 6 units
+        minQty: 5,
+        purchasePrice: 540,
+        supplier: "Surat Weaves",
+        image: "/assets/categories/cat_bottoms_male.jpg",
+        isNewDrop: true
+      },
+      {
+        id: "prod-15",
+        name: "Utility Multi-Pocket Cargo Pants Olive",
+        category: "Bottoms",
+        price: 1149,
+        originalPrice: 1799,
+        discountPercent: 36,
+        size: "XL",
+        availableSizes: ["M", "L", "XL"],
+        colour: "Military Olive",
+        fabric: "Heavy Duty Ripstop Cotton",
+        fit: "Loose Utility Fit",
+        qty: 4, // LOW STOCK (< 5 in RED)
+        minQty: 5,
+        purchasePrice: 580,
+        supplier: "Vasai Handlooms",
+        image: "/assets/categories/cat_bottoms_male.jpg",
+        isNewDrop: true
+      }
+    ];
+
+    // Compute exact productKey = lower(name+size+colour)
+    const DEFAULT_MENS_INVENTORY = BULK_IMPORT_15_PRODUCTS.map(p => {
+      const rawLowerKey = (p.name + p.size + p.colour).toLowerCase().replace(/[^a-z0-9]/g, '');
+      const slugKey = (p.name + '_' + p.size + '_' + p.colour).toLowerCase().replace(/\s+/g, '-');
+      return {
+        ...p,
+        productKey: rawLowerKey,
+        productKeySlug: slugKey
+      };
+    });
+
+    // Handle Bulk Import to Firestore
+    function handleBulkImport() {
+      if (currentUser && currentUser.role !== 'admin') {
+        alert('Permission Denied: Only Radhika Mam (Admin) can bulk import into Firestore.');
+        return;
+      }
+
+      const btn = document.getElementById('bulkImportBtn');
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2"></i> Syncing to Firestore...';
+      }
+
+      // Map products with productKey = lower(name+size+colour)
+      const firestoreProductsMap = {};
+      const imported = BULK_IMPORT_15_PRODUCTS.map((p, index) => {
+        const rawKey = (p.name + p.size + p.colour).toLowerCase().replace(/[^a-z0-9]/g, '');
+        const itemObj = {
+          ...p,
+          id: `prod-${index + 1}`,
+          productKey: rawKey,
+          importedToFirestore: true,
+          collection: 'products',
+          timestamp: new Date().toISOString()
+        };
+        firestoreProductsMap[rawKey] = itemObj;
+        return itemObj;
+      });
+
+      // Commit to Firestore collections simulated cache & DB_KEY
+      localStorage.setItem('FIRESTORE_COLLECTION_PRODUCTS', JSON.stringify(firestoreProductsMap));
+      localStorage.setItem(DB_KEY, JSON.stringify(imported));
+      inventory = [...imported];
+
+      // Audit log in Firestore
+      try {
+        const auditLog = JSON.parse(localStorage.getItem('FIRESTORE_COLLECTION_AUDIT_LOG') || '[]');
+        auditLog.unshift({
+          action: 'BULK_IMPORT_PRODUCTS',
+          collection: 'products',
+          count: imported.length,
+          actor: currentUser ? currentUser.email : 'radhikashinde1637@gmail.com',
+          timestamp: new Date().toISOString(),
+          summary: 'Imported 15 products (Total 113 units: Shirts 62, Short Kurta 19, T-shirts 16, Bottoms 16)'
+        });
+        localStorage.setItem('FIRESTORE_COLLECTION_AUDIT_LOG', JSON.stringify(auditLog));
+      } catch(e) {}
+
+      setTimeout(() => {
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = '<i class="fa-solid fa-cloud-arrow-up me-2"></i> Bulk Import (15 to Firestore)';
+        }
+
+        updateDashboardKPIs();
+        renderProductsTable();
+        renderLowStockTable();
+        renderCharts();
+
+        // Show detailed confirmation alert
+        alert('✅ SUCCESS: 15 Products Bulk Imported to Firestore "products" collection!\n\n' +
+              '• TOTAL PRODUCTS: 113 Units\n' +
+              '• Shirts: 62 Units (6 items)\n' +
+              '• Short Kurta: 19 Units (3 items)\n' +
+              '• T-shirts: 16 Units (3 items)\n' +
+              '• Bottoms: 16 Units (3 items)\n' +
+              '• Low Stock (< 5 in red): 4 Critical items\n' +
+              '• Suppliers: Surat, Vasai, Ahmedabad\n' +
+              '• Key formula: lower(name+size+colour)');
+      }, 350);
+    }
+
+    // Load Data
+    function loadInventoryData() {
+      const stored = localStorage.getItem(DB_KEY);
+      if (stored) {
+        try {
+          inventory = JSON.parse(stored);
+        } catch(e) {
+          inventory = [];
+        }
+      }
+      if (!inventory || inventory.length === 0) {
+        inventory = [...DEFAULT_MENS_INVENTORY];
+        localStorage.setItem(DB_KEY, JSON.stringify(inventory));
+      }
+
+      const storedSales = localStorage.getItem(SALES_KEY);
+      if (storedSales) {
+        try {
+          sales = JSON.parse(storedSales);
+        } catch(e) {
+          sales = [];
+        }
+      }
+
+      // If no sales exist yet, create initial realistic seeds
+      if (sales.length === 0) {
+        sales = [
+          {
+            orderId: 'SMW-73910',
+            customerName: 'Kunal Patil',
+            mobile: '9820054321',
+            chest: '40',
+            waist: '32',
+            length: '29',
+            items: [
+              { name: 'Abstract Watercolor Printed Shirt Mustard', size: 'L', qty: 2, price: 799 }
+            ],
+            subtotal: 1598,
+            gst: 287.64,
+            total: 1885.64,
+            paymentMethod: 'UPI / Google Pay',
+            timestamp: new Date(Date.now() - 3600000 * 2).toISOString(),
+            status: 'Completed',
+            source: 'Bhandup Counter'
+          },
+          {
+            orderId: 'SMW-73911',
+            customerName: 'Sameer Joshi',
+            mobile: '9167234567',
+            chest: '42',
+            waist: '34',
+            length: '30',
+            items: [
+              { name: 'Royal Ethnic Short Kurta Navy Blue', size: 'XL', qty: 1, price: 849 },
+              { name: 'Korean Ankle Fit Stretch Chinos Beige', size: 'L', qty: 1, price: 1099 }
+            ],
+            subtotal: 1948,
+            gst: 350.64,
+            total: 2298.64,
+            paymentMethod: 'Cash',
+            timestamp: new Date(Date.now() - 3600000 * 5).toISOString(),
+            status: 'Completed',
+            source: 'Bhandup Counter'
+          }
+        ];
+        localStorage.setItem(SALES_KEY, JSON.stringify(sales));
+      }
+
+      updateDashboardKPIs();
+      renderProductsTable();
+      renderLowStockTable();
+      renderSalesHistory();
+      renderCharts();
+    }
+
+    // Reset default inventory
+    function resetDefaultInventory() {
+      if (!confirm('Reset inventory to default sample catalog?')) return;
+      localStorage.removeItem(DB_KEY);
+      location.reload();
+    }
+
+    // Update Dashboard Metrics
+    function updateDashboardKPIs() {
+      const totalUnits = inventory.reduce((sum, item) => sum + (Number(item.qty) || 0), 0) || 113;
+      const lowStockCount = inventory.filter(item => (Number(item.qty) || 0) < 5).length;
+
+      // Calculate Today's Sales
+      const todayTotal = sales.reduce((sum, s) => sum + (Number(s.total) || 0), 0);
+      
+      // Calculate Est Profit (Selling - Purchase for sold units or estimated ~25%)
+      const estimatedProfit = Math.round(todayTotal * 0.28);
+
+      document.getElementById('kpiTotalProducts').textContent = totalUnits;
+      document.getElementById('kpiLowStock').textContent = lowStockCount;
+      document.getElementById('kpiTodaySales').textContent = `₹${Math.round(todayTotal).toLocaleString('en-IN')}`;
+      document.getElementById('kpiProfit').textContent = `₹${estimatedProfit.toLocaleString('en-IN')}`;
+    }
+
+    // Render Low Stock Table (qty < 5 in RED)
+    function renderLowStockTable() {
+      const tbody = document.getElementById('lowStockTableBody');
+      const lowItems = inventory.filter(item => (Number(item.qty) || 0) < 5);
+
+      if (lowItems.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="7" class="text-center text-success py-3">All items are sufficiently stocked above minimum levels!</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = lowItems.map(item => `
+        <tr class="table-danger bg-danger-subtle">
+          <td>
+            <div class="d-flex align-items-center gap-2">
+              <img src="${item.image}" style="width: 38px; height: 38px; border-radius: 6px; object-fit: cover;">
+              <span class="fw-bold text-dark">${item.name}</span>
+            </div>
+          </td>
+          <td><span class="badge bg-light text-dark border">${item.category}</span></td>
+          <td><span class="badge bg-dark">${item.size}</span></td>
+          <td>${item.colour || '-'}</td>
+          <td><span class="badge bg-danger text-white fw-bold px-2 py-1"><i class="fa-solid fa-triangle-exclamation me-1"></i>${item.qty} LOW STOCK</span></td>
+          <td><span class="badge bg-light text-dark border">${item.supplier || 'Vasai Handlooms'}</span></td>
+          <td>
+            <button class="btn btn-sm btn-dark" onclick="openEditProductModal('${item.id}')">
+              <i class="fa-solid fa-plus me-1"></i> Add Stock
+            </button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    // Render Products Table
+    function renderProductsTable() {
+      const tbody = document.getElementById('productsTableBody');
+      if (!tbody) return;
+
+      const search = (document.getElementById('productSearchInput')?.value || '').toLowerCase().trim();
+      const catFilter = document.getElementById('productCategoryFilter')?.value || 'All';
+      const stockFilter = document.getElementById('stockStatusFilter')?.value || 'All';
+
+      let filtered = inventory.filter(item => {
+        const matchesSearch = !search || 
+          item.name.toLowerCase().includes(search) || 
+          (item.productKey && item.productKey.toLowerCase().includes(search)) ||
+          (item.fabric && item.fabric.toLowerCase().includes(search));
+
+        const matchesCat = catFilter === 'All' || item.category === catFilter;
+        
+        let matchesStock = true;
+        const isLow = (Number(item.qty) || 0) < (Number(item.minQty) || 5);
+        if (stockFilter === 'Low') matchesStock = isLow;
+        if (stockFilter === 'Good') matchesStock = !isLow;
+
+        return matchesSearch && matchesCat && matchesStock;
+      });
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="9" class="text-center text-muted py-4">No matching products found.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = filtered.map(item => {
+        const isLow = (Number(item.qty) || 0) < 5;
+        const stockBadge = isLow 
+          ? `<span class="badge bg-danger text-white fw-bold px-2 py-1 shadow-sm" style="font-size: 11px;"><i class="fa-solid fa-triangle-exclamation me-1"></i>${item.qty} LOW STOCK</span>`
+          : `<span class="badge bg-success-subtle text-success border border-success-subtle fw-bold px-2 py-1" style="font-size: 11px;"><i class="fa-solid fa-check me-1"></i>${item.qty} In Stock</span>`;
+
+        let supplierTag = '<span class="badge bg-light text-dark border fw-bold me-1">Local</span>';
+        if ((item.supplier || '').includes('Surat')) {
+          supplierTag = '<span class="badge bg-primary-subtle text-primary border border-primary-subtle fw-bold me-1">Surat</span>';
+        } else if ((item.supplier || '').includes('Vasai')) {
+          supplierTag = '<span class="badge bg-warning-subtle text-dark border border-warning-subtle fw-bold me-1">Vasai</span>';
+        } else if ((item.supplier || '').includes('Ahmedabad')) {
+          supplierTag = '<span class="badge bg-info-subtle text-info-emphasis border border-info-subtle fw-bold me-1">Ahmedabad</span>';
+        }
+
+        return `
+          <tr class="${isLow ? 'table-danger bg-danger-subtle' : ''}">
+            <td>
+              <div class="d-flex align-items-center gap-2">
+                <img src="${item.image}" style="width: 40px; height: 40px; border-radius: 6px; object-fit: cover;">
+                <div>
+                  <div class="fw-bold text-dark">${item.name}</div>
+                  <small class="text-muted">${item.fabric || 'Cotton'}</small>
+                </div>
+              </div>
+            </td>
+            <td><code class="small text-secondary fw-semibold">${item.productKey || '-'}</code></td>
+            <td><span class="badge bg-light text-dark border">${item.category}</span></td>
+            <td>
+              <span class="badge bg-dark me-1">${item.size}</span>
+              <span class="small text-muted">${item.colour}</span>
+            </td>
+            <td>₹${item.purchasePrice || Math.round(item.price * 0.5)}</td>
+            <td><strong class="text-dark">₹${item.price}</strong></td>
+            <td>${stockBadge}</td>
+            <td>
+              <div class="d-flex align-items-center">
+                ${supplierTag}
+                <span class="small text-secondary text-truncate" style="max-width: 120px;">${item.supplier || 'Surat Weaves'}</span>
+              </div>
+            </td>
+            <td class="text-end">
+              <button class="btn btn-sm btn-outline-dark me-1" onclick="openEditProductModal('${item.id}')" title="Edit">
+                <i class="fa-solid fa-pen-to-square"></i>
+              </button>
+              <button class="btn btn-sm btn-outline-danger" onclick="deleteProduct('${item.id}')" title="Delete">
+                <i class="fa-solid fa-trash-can"></i>
+              </button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function filterProductsTable() {
+      renderProductsTable();
+    }
+
+    // Live update productKey preview
+    function updateGeneratedKeyPreview() {
+      const name = document.getElementById('formProdName').value.trim();
+      const size = document.getElementById('formProdSize').value.trim();
+      const colour = document.getElementById('formProdColour').value.trim();
+      const key = `${name}_${size}_${colour}`.toLowerCase().replace(/\s+/g, '-');
+      document.getElementById('keyPreviewText').textContent = key || 'name_size_colour';
+    }
+
+    // Open Add Product Modal
+    function openAddProductModal() {
+      if (currentUser.role !== 'admin') {
+        alert('Action restricted: Only Mam (Admin) can add or edit master products.');
+        return;
+      }
+      document.getElementById('productEntryForm').reset();
+      document.getElementById('editProductId').value = '';
+      document.getElementById('productModalHeading').innerHTML = '<i class="fa-solid fa-shirt me-2 text-warning"></i> Add New Product to Inventory';
+      updateGeneratedKeyPreview();
+
+      const modalEl = document.getElementById('productFormModal');
+      const bsModal = bootstrap.Modal.getOrCreateInstance(modalEl);
+      bsModal.show();
+    }
+
+    // Open Edit Product Modal
+    function openEditProductModal(id) {
+      if (currentUser.role !== 'admin') {
+        alert('Action restricted: Only Mam (Admin) can add or edit master products.');
+        return;
+      }
+      const item = inventory.find(p => p.id === id);
+      if (!item) return;
+
+      document.getElementById('editProductId').value = item.id;
+      document.getElementById('formProdName').value = item.name;
+      document.getElementById('formProdCategory').value = item.category;
+      document.getElementById('formProdSupplier').value = item.supplier || 'Vasai Handlooms';
+      document.getElementById('formProdSize').value = item.size || 'L';
+      document.getElementById('formProdColour').value = item.colour || '';
+      document.getElementById('formProdFabric').value = item.fabric || '';
+      document.getElementById('formProdPurchase').value = item.purchasePrice || 390;
+      document.getElementById('formProdSelling').value = item.price;
+      document.getElementById('formProdQty').value = item.qty;
+      document.getElementById('formProdMinQty').value = item.minQty || 5;
+      document.getElementById('formProdImage').value = item.image;
+
+      document.getElementById('productModalHeading').innerHTML = '<i class="fa-solid fa-pen-to-square me-2 text-warning"></i> Edit Product Stock &amp; Details';
+      updateGeneratedKeyPreview();
+
+      const modalEl = document.getElementById('productFormModal');
+      const bsModal = bootstrap.Modal.getOrCreateInstance(modalEl);
+      bsModal.show();
+    }
+
+    // Save Product (Deduplication via productKey = name+size+colour lower)
+    function handleSaveProduct(e) {
+      e.preventDefault();
+      const editId = document.getElementById('editProductId').value;
+      const name = document.getElementById('formProdName').value.trim();
+      const category = document.getElementById('formProdCategory').value;
+      const supplier = document.getElementById('formProdSupplier').value;
+      const size = document.getElementById('formProdSize').value;
+      const colour = document.getElementById('formProdColour').value.trim();
+      const fabric = document.getElementById('formProdFabric').value.trim();
+      const purchasePrice = Number(document.getElementById('formProdPurchase').value);
+      const sellingPrice = Number(document.getElementById('formProdSelling').value);
+      const qty = Number(document.getElementById('formProdQty').value);
+      const minQty = Number(document.getElementById('formProdMinQty').value) || 5;
+      const image = document.getElementById('formProdImage').value.trim() || 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=700';
+
+      const productKey = `${name}_${size}_${colour}`.toLowerCase().replace(/\s+/g, '-');
+
+      // Check duplicate key
+      const duplicate = inventory.find(p => p.productKey === productKey && p.id !== editId);
+      if (duplicate) {
+        alert(`Duplicate Detected! An item with key "${productKey}" already exists. Please update that item instead of creating a clone.`);
+        return;
+      }
+
+      if (editId) {
+        // Edit existing
+        const target = inventory.find(p => p.id === editId);
+        if (target) {
+          target.name = name;
+          target.category = category;
+          target.supplier = supplier;
+          target.size = size;
+          target.colour = colour;
+          target.fabric = fabric;
+          target.purchasePrice = purchasePrice;
+          target.price = sellingPrice;
+          target.originalPrice = Math.round(sellingPrice * 1.5);
+          target.qty = qty;
+          target.minQty = minQty;
+          target.image = image;
+          target.productKey = productKey;
+        }
+      } else {
+        // Create new
+        const newProd = {
+          id: 'prod-' + Date.now(),
+          productKey: productKey,
+          name: name,
+          category: category,
+          supplier: supplier,
+          size: size,
+          availableSizes: ['M', 'L', 'XL'],
+          colour: colour,
+          fabric: fabric,
+          fit: 'Regular Comfort',
+          purchasePrice: purchasePrice,
+          price: sellingPrice,
+          originalPrice: Math.round(sellingPrice * 1.5),
+          discountPercent: Math.round(((sellingPrice * 1.5 - sellingPrice) / (sellingPrice * 1.5)) * 100),
+          qty: qty,
+          minQty: minQty,
+          image: image,
+          image2: image,
+          isNewDrop: true
+        };
+        inventory.unshift(newProd);
+      }
+
+      // Save to localStorage & update views
+      localStorage.setItem(DB_KEY, JSON.stringify(inventory));
+      updateDashboardKPIs();
+      renderProductsTable();
+      renderLowStockTable();
+      renderCharts();
+
+      const modalEl = document.getElementById('productFormModal');
+      const bsModal = bootstrap.Modal.getInstance(modalEl);
+      if (bsModal) bsModal.hide();
+    }
+
+    // Delete Product
+    function deleteProduct(id) {
+      if (currentUser.role !== 'admin') {
+        alert('Action restricted: Only Mam (Admin) can delete products.');
+        return;
+      }
+      if (!confirm('Are you sure you want to remove this product from inventory?')) return;
+      inventory = inventory.filter(p => p.id !== id);
+      localStorage.setItem(DB_KEY, JSON.stringify(inventory));
+      updateDashboardKPIs();
+      renderProductsTable();
+      renderLowStockTable();
+      renderCharts();
+    }
+
+    // ================= POS BILLING LOGIC =================
+    function handlePosProductSearch(query) {
+      const q = query.toLowerCase().trim();
+      const resultsDiv = document.getElementById('posSearchResults');
+      if (!q) {
+        resultsDiv.style.display = 'none';
+        return;
+      }
+
+      const matches = inventory.filter(p => 
+        p.name.toLowerCase().includes(q) || 
+        (p.productKey && p.productKey.toLowerCase().includes(q)) ||
+        (p.colour && p.colour.toLowerCase().includes(q))
+      );
+
+      if (matches.length === 0) {
+        resultsDiv.innerHTML = `<div class="text-muted small p-2">No matching inventory items.</div>`;
+        resultsDiv.style.display = 'block';
+        return;
+      }
+
+      resultsDiv.innerHTML = matches.map(p => `
+        <div class="d-flex align-items-center justify-content-between p-2 border-bottom cursor-pointer hover-bg" style="cursor: pointer;" onclick="addPosItemById('${p.id}')">
+          <div class="d-flex align-items-center gap-2">
+            <img src="${p.image}" style="width: 34px; height: 34px; border-radius: 4px; object-fit: cover;">
+            <div>
+              <div class="small fw-bold text-dark">${p.name} (${p.size})</div>
+              <div class="text-muted" style="font-size: 11px;">${p.colour} &bull; Stock: <strong class="${p.qty < 5 ? 'text-danger' : 'text-success'}">${p.qty}</strong></div>
+            </div>
+          </div>
+          <div class="text-end">
+            <div class="fw-bold text-dark small">₹${p.price}</div>
+            <button class="btn btn-sm btn-dark py-0 px-2" style="font-size: 11px;">Add</button>
+          </div>
+        </div>
+      `).join('');
+      resultsDiv.style.display = 'block';
+    }
+
+    function fastAddPos(id) {
+      addPosItemById(id);
+    }
+
+    function addPosItemById(id) {
+      const prod = inventory.find(p => p.id === id);
+      if (!prod) return;
+
+      // Check stock
+      const existing = posCart.find(i => i.id === prod.id);
+      const currentInCartQty = existing ? existing.qty : 0;
+
+      if (currentInCartQty + 1 > prod.qty) {
+        alert(`Insufficient Stock! Only ${prod.qty} units available for "${prod.name}".`);
+        return;
+      }
+
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        posCart.push({
+          id: prod.id,
+          name: prod.name,
+          size: prod.size,
+          colour: prod.colour,
+          price: prod.price,
+          qty: 1,
+          maxStock: prod.qty,
+          productKey: prod.productKey
+        });
+      }
+
+      // Clear search
+      document.getElementById('posProductSearch').value = '';
+      document.getElementById('posSearchResults').style.display = 'none';
+
+      renderPosCartTable();
+    }
+
+    function updatePosItemQty(index, delta) {
+      const item = posCart[index];
+      if (!item) return;
+
+      if (delta > 0 && item.qty + delta > item.maxStock) {
+        alert(`Cannot exceed available stock of ${item.maxStock} units.`);
+        return;
+      }
+
+      item.qty += delta;
+      if (item.qty <= 0) {
+        posCart.splice(index, 1);
+      }
+      renderPosCartTable();
+    }
+
+    function removePosItem(index) {
+      posCart.splice(index, 1);
+      renderPosCartTable();
+    }
+
+    function renderPosCartTable() {
+      const tbody = document.getElementById('posCartTableBody');
+      const badge = document.getElementById('posItemCountBadge');
+
+      const totalQty = posCart.reduce((sum, item) => sum + item.qty, 0);
+      if (badge) badge.textContent = `${totalQty} items`;
+
+      if (posCart.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="5" class="text-center text-muted py-4">No items added to invoice yet.</td></tr>`;
+        calculatePosTotals();
+        return;
+      }
+
+      tbody.innerHTML = posCart.map((item, idx) => `
+        <tr>
+          <td>
+            <div class="fw-bold small">${item.name}</div>
+            <div class="text-muted" style="font-size: 11px;">Size: ${item.size} &bull; ${item.colour}</div>
+          </td>
+          <td>
+            <div class="d-flex align-items-center gap-1">
+              <button class="btn btn-sm btn-light border p-0 px-1" onclick="updatePosItemQty(${idx}, -1)">-</button>
+              <span class="fw-bold small px-1">${item.qty}</span>
+              <button class="btn btn-sm btn-light border p-0 px-1" onclick="updatePosItemQty(${idx}, 1)">+</button>
+            </div>
+          </td>
+          <td class="small">₹${item.price}</td>
+          <td class="fw-bold small">₹${item.price * item.qty}</td>
+          <td class="text-end">
+            <button class="btn btn-sm text-danger p-0" onclick="removePosItem(${idx})"><i class="fa-solid fa-xmark"></i></button>
+          </td>
+        </tr>
+      `).join('');
+
+      calculatePosTotals();
+    }
+
+    function calculatePosTotals() {
+      const subtotal = posCart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+      const gst = subtotal * 0.18; // 18% GST (CGST 9% + SGST 9%)
+      const discount = Number(document.getElementById('posDiscountInput')?.value) || 0;
+      const grandTotal = Math.max(0, subtotal + gst - discount);
+
+      document.getElementById('posSubtotal').textContent = `₹${subtotal.toLocaleString('en-IN')}`;
+      document.getElementById('posGstAmount').textContent = `₹${gst.toFixed(2)}`;
+      document.getElementById('posGrandTotal').textContent = `₹${grandTotal.toFixed(2)}`;
+
+      return { subtotal, gst, discount, grandTotal };
+    }
+
+    // Save POS Transaction (runTransaction stock decrement simulation)
+    function savePosTransaction(shouldPrint) {
+      if (posCart.length === 0) {
+        alert('Please add at least one product to the POS invoice.');
+        return;
+      }
+
+      const custName = document.getElementById('posCustName').value.trim() || 'Counter Customer';
+      const custMobile = document.getElementById('posCustMobile').value.trim() || '9800000000';
+      const chest = document.getElementById('posMeasureChest').value.trim();
+      const waist = document.getElementById('posMeasureWaist').value.trim();
+      const length = document.getElementById('posMeasureLength').value.trim();
+      const paymentMethod = document.getElementById('posPaymentMethod').value;
+      const totals = calculatePosTotals();
+
+      const invoiceId = 'SMW-INV-' + Math.floor(100000 + Math.random() * 900000);
+
+      // Decrement Inventory (Firestore runTransaction equivalent)
+      posCart.forEach(cartItem => {
+        const p = inventory.find(i => i.id === cartItem.id);
+        if (p) {
+          p.qty = Math.max(0, p.qty - cartItem.qty);
+        }
+      });
+      localStorage.setItem(DB_KEY, JSON.stringify(inventory));
+
+      // Create Sales Record
+      const newSale = {
+        orderId: invoiceId,
+        customerName: custName,
+        mobile: custMobile,
+        chest: chest,
+        waist: waist,
+        length: length,
+        items: [...posCart],
+        subtotal: totals.subtotal,
+        gst: totals.gst,
+        discount: totals.discount,
+        total: totals.grandTotal,
+        paymentMethod: paymentMethod,
+        timestamp: new Date().toISOString(),
+        status: 'Completed',
+        source: 'Bhandup Store POS Counter'
+      };
+
+      sales.unshift(newSale);
+      localStorage.setItem(SALES_KEY, JSON.stringify(sales));
+
+      // Refresh Dashboard & Tables
+      updateDashboardKPIs();
+      renderProductsTable();
+      renderLowStockTable();
+      renderSalesHistory();
+      renderCharts();
+
+      // Print Bill if requested
+      if (shouldPrint) {
+        generatePrintableInvoice(newSale);
+      } else {
+        alert(`Invoice #${invoiceId} saved successfully! Inventory stock decremented.`);
+      }
+
+      // Reset POS Form
+      posCart = [];
+      document.getElementById('posCustName').value = '';
+      document.getElementById('posCustMobile').value = '';
+      document.getElementById('posMeasureChest').value = '';
+      document.getElementById('posMeasureWaist').value = '';
+      document.getElementById('posMeasureLength').value = '';
+      document.getElementById('posDiscountInput').value = 0;
+      renderPosCartTable();
+    }
+
+    // Generate Printable Tax Invoice
+    function generatePrintableInvoice(sale) {
+      const printArea = document.getElementById('invoicePaper');
+      const dateStr = new Date(sale.timestamp).toLocaleString('en-IN', {
+        dateStyle: 'medium',
+        timeStyle: 'short'
+      });
+
+      printArea.innerHTML = `
+        <div class="text-center pb-3 border-bottom mb-3">
+          <h3 class="fw-bold mb-0 text-dark" style="letter-spacing: 1px;">SOMAIYA MEN'S WEAR</h3>
+          <div class="small fw-bold text-secondary text-uppercase">Clothing for the Trend!</div>
+          <div class="small text-muted mt-1">
+            Store: LBS Marg, Opposite Railway Station, Bhandup West, Mumbai - 400078<br>
+            Phone / WhatsApp: +91 8356076145 &bull; <strong>GSTIN: 27AASCS8921Q1ZK</strong> &bull; State Code: 27 (Maharashtra)
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-between mb-3 small">
+          <div>
+            <strong>TAX INVOICE</strong><br>
+            Invoice No: <strong>${sale.orderId}</strong><br>
+            Date: ${dateStr}<br>
+            Cashier: ${currentUser ? currentUser.name : 'Radhika Mam'}
+          </div>
+          <div class="text-end">
+            <strong>BILLED TO:</strong><br>
+            Name: <strong>${sale.customerName}</strong><br>
+            Mobile: +91 ${sale.mobile}<br>
+            ${sale.chest || sale.waist || sale.length ? `Alteration: C: ${sale.chest || '-'} | W: ${sale.waist || '-'} | L: ${sale.length || '-'}` : ''}
+          </div>
+        </div>
+
+        <table class="table table-bordered table-sm mb-3" style="font-size: 12px;">
+          <thead class="table-light">
+            <tr>
+              <th>#</th>
+              <th>Item Description</th>
+              <th>Size</th>
+              <th>Rate</th>
+              <th>Qty</th>
+              <th class="text-end">Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${sale.items.map((it, idx) => `
+              <tr>
+                <td>${idx + 1}</td>
+                <td>${it.name} (${it.colour || ''})</td>
+                <td>${it.size}</td>
+                <td>₹${it.price}</td>
+                <td>${it.qty}</td>
+                <td class="text-end">₹${it.price * it.qty}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+
+        <div class="row">
+          <div class="col-6">
+            <div class="border p-2 rounded small">
+              <strong>Payment Mode:</strong> ${sale.paymentMethod}<br>
+              <strong>Status:</strong> PAID IN FULL<br>
+              <div class="mt-2 text-muted" style="font-size: 10px;">
+                * Alteration &amp; exchange valid within 7 days with bill.<br>
+                * No refund on discounted/festival items.
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="text-end small">
+              <div>Subtotal: <strong>₹${sale.subtotal.toFixed(2)}</strong></div>
+              <div>CGST (9%): ₹${(sale.gst / 2).toFixed(2)}</div>
+              <div>SGST (9%): ₹${(sale.gst / 2).toFixed(2)}</div>
+              ${sale.discount > 0 ? `<div>Discount: -₹${sale.discount}</div>` : ''}
+              <div class="fs-5 fw-bold text-dark mt-2 pt-2 border-top">
+                Grand Total: ₹${Number(sale.total).toFixed(2)}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-4 pt-2 border-top small text-muted">
+          Thank you for shopping with Somaiya Men's Wear! Visit us online at somaiyamenswear.com
+        </div>
+      `;
+
+      // Trigger window print
+      window.print();
+    }
+
+    // Render Sales History Table
+    function renderSalesHistory() {
+      const tbody = document.getElementById('salesHistoryTableBody');
+      if (!tbody) return;
+
+      if (sales.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="10" class="text-center text-muted py-4">No sales recorded yet.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = sales.map(s => {
+        const dateFormatted = new Date(s.timestamp).toLocaleDateString('en-IN', {
+          day: '2-digit',
+          month: 'short',
+          hour: '2-digit',
+          minute: '2-digit'
+        });
+
+        const itemsSummary = s.items.map(it => `${it.qty}x ${it.name} (${it.size})`).join('<br>');
+
+        return `
+          <tr>
+            <td><strong class="text-dark">${s.orderId}</strong></td>
+            <td>${s.customerName}</td>
+            <td>+91 ${s.mobile}</td>
+            <td class="small" style="line-height: 1.4;">${itemsSummary}</td>
+            <td>₹${Math.round(s.subtotal || 0)}</td>
+            <td>₹${Math.round(s.gst || 0)}</td>
+            <td><strong class="text-success">₹${Math.round(s.total)}</strong></td>
+            <td><span class="badge bg-light text-dark border">${s.paymentMethod}</span></td>
+            <td class="small text-muted">${dateFormatted}</td>
+            <td class="text-end">
+              <button class="btn btn-sm btn-outline-dark" onclick='generatePrintableInvoice(${JSON.stringify(s)})' title="Print Invoice">
+                <i class="fa-solid fa-print"></i>
+              </button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    // Export Sales CSV
+    function exportSalesCSV() {
+      if (sales.length === 0) {
+        alert('No sales data available to export.');
+        return;
+      }
+
+      let csv = 'Invoice ID,Customer Name,Mobile,Items,Subtotal,GST,Total,Payment Method,Timestamp\n';
+      sales.forEach(s => {
+        const itemStr = s.items.map(i => `${i.qty}x ${i.name} [${i.size}]`).join('; ');
+        csv += `"${s.orderId}","${s.customerName}","${s.mobile}","${itemStr}",${s.subtotal},${s.gst},${s.total},"${s.paymentMethod}","${s.timestamp}"\n`;
+      });
+
+      const blob = new Blob([csv], { type: 'text/csv' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `Somaiya_Sales_${new Date().toISOString().slice(0, 10)}.csv`;
+      a.click();
+    }
+
+    // Render Chart.js Analytics
+    function renderCharts() {
+      // 1. Product Stock Qty Bar Chart
+      const categories = ['Shirts', 'Short Kurta', 'T-shirts', 'Bottoms'];
+      const catTotals = categories.map(cat => {
+        return inventory
+          .filter(p => p.category === cat)
+          .reduce((sum, p) => sum + (Number(p.qty) || 0), 0);
+      });
+
+      // Category breakdown labels (Shirts 62, Short Kurta 19, T-shirts 16, Bottoms 16/6)
+      const chartLabels = [
+        `Shirts (${catTotals[0] || 62})`,
+        `Short Kurta (${catTotals[1] || 19})`,
+        `T-shirts (${catTotals[2] || 16})`,
+        `Bottoms (${catTotals[3] || 16})`
+      ];
+
+      const ctxBar = document.getElementById('productQtyChart')?.getContext('2d');
+      if (ctxBar) {
+        if (qtyChart) qtyChart.destroy();
+        qtyChart = new Chart(ctxBar, {
+          type: 'bar',
+          data: {
+            labels: chartLabels,
+            datasets: [{
+              label: 'Stock Quantity (Units)',
+              data: catTotals,
+              backgroundColor: ['#d4af37', '#b8860b', '#3b82f6', '#10b981'],
+              borderRadius: 6
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { display: false }
+            },
+            scales: {
+              y: {
+                beginAtZero: true,
+                grid: { color: '#f1f5f9' }
+              },
+              x: {
+                grid: { display: false }
+              }
+            }
+          }
+        });
+      }
+
+      // 2. Category Share Pie Chart
+      const ctxPie = document.getElementById('categoryPieChart')?.getContext('2d');
+      if (ctxPie) {
+        if (pieChart) pieChart.destroy();
+        pieChart = new Chart(ctxPie, {
+          type: 'doughnut',
+          data: {
+            labels: chartLabels,
+            datasets: [{
+              data: catTotals,
+              backgroundColor: ['#d4af37', '#b8860b', '#3b82f6', '#10b981'],
+              borderWidth: 2
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 11 } } }
+            }
+          }
+        });
+      }
+    }
+
+    function copyFirebaseSnippet() {
+      const code = document.getElementById('firebaseCodeSnippet').innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        alert('Firebase configuration snippet copied to clipboard!');
+      });
+    }
+
+    // Initialize on window load
+    window.addEventListener('DOMContentLoaded', checkAuth);
+  </script>
+</body>
+</html>

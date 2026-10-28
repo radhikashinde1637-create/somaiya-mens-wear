@@ -1,0 +1,2012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SOMAIYA MEN'S WEAR - Bhandup Store | 100% Men's Wear Collection</title>
+  <meta name="description" content="SOMAIYA MEN'S WEAR - Bhandup Store. Exclusive Men's Fashion store: Handcrafted Printed Cotton Shirts, Royal Short Kurtas, Knit T-Shirts & Relaxed Bottoms. LBS Marg, Bhandup West, Mumbai - 400078. Dispatched in 24 hours. COD Available." />
+  <meta property="og:title" content="SOMAIYA MEN'S WEAR - Bhandup Store" />
+  <meta property="og:description" content="SOMAIYA MEN'S WEAR - Bhandup Store, LBS Marg, Bhandup West, Mumbai - 400078. Premium menswear tailored for modern gentlemen." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome 6.5.1 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    :root {
+      --primary-black: #111111;
+      --gold-accent: #d4af37;
+      --gold-dark: #b8860b;
+      --gold-light: #f7e7ce;
+      --bg-ivory: #faf6f0;
+      --bg-light: #f8f8f8;
+      --text-muted: #666666;
+      --border-color: #e5e5e5;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: #ffffff;
+      color: var(--primary-black);
+      overflow-x: hidden;
+      padding-bottom: 72px; /* For mobile sticky bar */
+    }
+
+    @media (min-width: 992px) {
+      body {
+        padding-bottom: 0;
+      }
+    }
+
+    /* 1. TOP ANNOUNCEMENT BAR (Exact OmartFashion style) */
+    .top-announcement-bar {
+      background-color: #000000;
+      color: #ffffff;
+      height: 28px;
+      line-height: 28px;
+      font-size: 11px;
+      letter-spacing: 1px;
+      font-weight: 600;
+      text-transform: uppercase;
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      z-index: 1030;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .top-announcement-bar .nav-arrow {
+      color: #888888;
+      font-size: 10px;
+    }
+
+    /* 2. STICKY HEADER (Exact OmartFashion logo badge & icons) */
+    .site-header {
+      background: #ffffff;
+      border-bottom: 1px solid #ebebeb;
+      position: sticky;
+      top: 0;
+      z-index: 1020;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+    }
+
+    .brand-logo-container {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      gap: 10px;
+    }
+
+    .brand-badge-circle {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #000000;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #000000;
+      flex-shrink: 0;
+    }
+
+    .brand-badge-circle .circle-inner {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px dashed rgba(255,255,255,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 11px;
+      letter-spacing: 0.5px;
+    }
+
+    .brand-text-block {
+      line-height: 1.1;
+      text-align: left;
+    }
+
+    .brand-name {
+      font-size: 21px;
+      font-weight: 900;
+      letter-spacing: 1.2px;
+      color: #000000;
+      text-transform: uppercase;
+      margin: 0;
+    }
+
+    .brand-tagline {
+      font-size: 9.5px;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      color: #333333;
+      text-transform: uppercase;
+      display: block;
+      margin-top: 2px;
+    }
+
+    .header-icon-btn {
+      background: none;
+      border: none;
+      color: #111111;
+      font-size: 19px;
+      padding: 6px 8px;
+      position: relative;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .header-icon-btn:hover {
+      color: var(--gold-dark);
+    }
+
+    .cart-badge {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      background: #000000;
+      color: #ffffff;
+      font-size: 10px;
+      font-weight: 700;
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #fff;
+    }
+
+    /* 3. HERO BANNER - Exact OmartFashion Style with 4 Male Models */
+    .hero-banner-omf {
+      background-color: #0a0a0a;
+      position: relative;
+      overflow: hidden;
+      color: #ffffff;
+    }
+
+    .hero-bg-wrapper {
+      position: relative;
+      width: 100%;
+      height: 520px;
+      overflow: hidden;
+    }
+
+    @media (max-width: 768px) {
+      .hero-bg-wrapper {
+        height: 480px;
+      }
+    }
+
+    .hero-bg-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      opacity: 0.9;
+    }
+
+    .hero-overlay-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 30px 20px 25px 20px;
+      background: linear-gradient(180deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0.7) 100%);
+      text-align: center;
+    }
+
+    .hero-tag-pill {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #ffffff;
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin: 0 auto;
+    }
+
+    .hero-headline {
+      font-size: 46px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      line-height: 1;
+      margin-top: 10px;
+      color: #ffffff;
+      text-shadow: 0 4px 15px rgba(0,0,0,0.6);
+    }
+
+    @media (min-width: 768px) {
+      .hero-headline {
+        font-size: 64px;
+      }
+    }
+
+    .hero-subheadline {
+      font-size: 13.5px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #e0e0e0;
+      margin-top: 6px;
+    }
+
+    .hero-center-box {
+      background: rgba(255, 255, 255, 0.92);
+      color: #111111;
+      padding: 10px 20px;
+      border-radius: 4px;
+      display: inline-block;
+      margin: auto auto 20px auto;
+      max-width: 380px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    }
+
+    .hero-center-box h6 {
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      margin-bottom: 2px;
+      text-transform: uppercase;
+    }
+
+    .hero-center-box p {
+      font-size: 11px;
+      font-weight: 600;
+      color: #555555;
+      margin: 0;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .btn-hero-action {
+      background-color: var(--gold-accent);
+      color: #000000;
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      padding: 12px 30px;
+      border-radius: 999px;
+      border: none;
+      text-transform: uppercase;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+      margin: 0 auto;
+      transition: all 0.25s;
+    }
+
+    .btn-hero-action:hover {
+      background-color: var(--gold-dark);
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    /* 4. MARQUEE */
+    .marquee-container {
+      background-color: #000000;
+      color: #ffffff;
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 12px 0;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .marquee-track {
+      display: inline-block;
+      white-space: nowrap;
+      animation: marqueeLoop 24s linear infinite;
+    }
+
+    @keyframes marqueeLoop {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* 5. SHOP BY CATEGORY - Exact 4 Male Cards */
+    .categories-section {
+      background-color: #f8f8f8;
+      padding: 45px 0 55px 0;
+    }
+
+    .section-title {
+      font-size: 26px;
+      font-weight: 900;
+      text-align: center;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #111111;
+      margin-bottom: 28px;
+    }
+
+    .category-card-omf {
+      background: #ffffff;
+      border-radius: 18px;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+      transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.3s ease;
+      text-align: center;
+      text-decoration: none;
+      color: #111;
+      display: block;
+      border: 1px solid #eeeeee;
+    }
+
+    .category-card-omf:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+      color: #000;
+    }
+
+    .category-card-img {
+      height: 190px;
+      width: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    .category-label {
+      font-size: 15px;
+      font-weight: 700;
+      padding: 14px 10px;
+      letter-spacing: 0.5px;
+    }
+
+    /* 6. NEW DROP SECTION - Exact OmartFashion Style */
+    .new-drop-section {
+      padding: 50px 0 70px 0;
+    }
+
+    .section-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .section-header-row h2 {
+      font-size: 24px;
+      font-weight: 900;
+      margin: 0;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: #000;
+    }
+
+    .view-all-link {
+      font-size: 13px;
+      font-weight: 600;
+      color: #111;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+    }
+
+    /* OmartFashion Product Card */
+    .product-card-omf {
+      background: #ffffff;
+      border-radius: 14px;
+      overflow: hidden;
+      position: relative;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-img-box {
+      position: relative;
+      width: 100%;
+      height: 270px;
+      background: #f7f7f7;
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .product-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      transition: transform 0.4s ease;
+    }
+
+    .product-card-omf:hover .product-img-box img {
+      transform: scale(1.04);
+    }
+
+    /* White pill "Sale" badge */
+    .sale-pill-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: #ffffff;
+      color: #000000;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 999px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+      z-index: 2;
+    }
+
+    /* Circular white bag with plus icon */
+    .bag-plus-btn {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      width: 38px;
+      height: 38px;
+      background: #ffffff;
+      color: #111111;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
+      border: 1px solid rgba(0,0,0,0.06);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      z-index: 3;
+    }
+
+    .bag-plus-btn:hover {
+      background: #000000;
+      color: #ffffff;
+      transform: scale(1.1);
+    }
+
+    .product-details-box {
+      padding: 10px 4px 4px 4px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .product-card-title {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #111111;
+      margin-bottom: 4px;
+      line-height: 1.35;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .product-price-line {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 2px;
+    }
+
+    .price-sale-bold {
+      font-size: 14.5px;
+      font-weight: 800;
+      color: #000000;
+    }
+
+    .price-mrp-cut {
+      font-size: 13px;
+      color: #999999;
+      text-decoration: line-through;
+    }
+
+    /* 7. FLOATING WHATSAPP BUTTON (Exact OmartFashion) */
+    .floating-whatsapp-omf {
+      position: fixed;
+      bottom: 20px;
+      right: 16px;
+      background-color: #25D366;
+      color: #ffffff;
+      border-radius: 50px;
+      padding: 11px 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      gap: 8px;
+      box-shadow: 0 4px 18px rgba(37, 211, 102, 0.45);
+      z-index: 1035;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .floating-whatsapp-omf i {
+      font-size: 21px;
+      color: #ffffff;
+    }
+
+    .floating-whatsapp-omf:hover {
+      background-color: #20ba59;
+      color: #ffffff;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.55);
+    }
+
+    /* 8. MOBILE BOTTOM STICKY BAR */
+    .mobile-sticky-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #ffffff;
+      border-top: 1px solid #e5e5e5;
+      box-shadow: 0 -3px 12px rgba(0, 0, 0, 0.08);
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 1010;
+    }
+
+    @media (min-width: 992px) {
+      .mobile-sticky-bar {
+        display: none;
+      }
+    }
+
+    .sticky-thumb {
+      width: 44px;
+      height: 44px;
+      border-radius: 6px;
+      object-fit: cover;
+      margin-right: 10px;
+    }
+
+    /* 9. PRODUCT DETAIL MODAL (Exact OmartFashion screenshot) */
+    .modal-cod-banner {
+      background-color: #1e1e1e;
+      color: #ffffff;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 8px 12px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .size-box-omf {
+      min-width: 48px;
+      height: 44px;
+      border: 1.5px solid #d4d4d4;
+      background: #ffffff;
+      color: #111;
+      font-weight: 700;
+      font-size: 13.5px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s ease;
+    }
+
+    .size-box-omf.active, .size-box-omf:hover {
+      background: #000000 !important;
+      color: #ffffff !important;
+      border-color: #000000 !important;
+    }
+
+    .size-box-omf.disabled {
+      color: #aaa;
+      border-color: #eee;
+      background: #fafafa;
+      position: relative;
+      cursor: not-allowed;
+    }
+
+    /* Modal Buy Now with GPay / UPI */
+    .btn-buy-now-black {
+      background: #000000;
+      color: #ffffff;
+      border: none;
+      font-weight: 800;
+      font-size: 14px;
+      letter-spacing: 1px;
+      padding: 13px 20px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-transform: uppercase;
+      transition: background 0.2s;
+    }
+
+    .btn-buy-now-black:hover {
+      background: #252525;
+      color: #ffffff;
+    }
+
+    .btn-add-bag-outline {
+      background: #ffffff;
+      color: #000000;
+      border: 2px solid #000000;
+      font-weight: 700;
+      font-size: 13.5px;
+      padding: 12px 20px;
+      border-radius: 8px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      transition: background 0.2s;
+    }
+
+    .btn-add-bag-outline:hover {
+      background: #f4f4f4;
+    }
+
+    /* 10. FOOTER (#111) */
+    .site-footer {
+      background-color: #111111;
+      color: #ffffff;
+      padding: 60px 0 30px 0;
+      font-size: 13.5px;
+      border-top: 3px solid var(--gold-dark);
+    }
+
+    .footer-heading {
+      color: #ffffff;
+      font-size: 14.5px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .footer-heading::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 28px;
+      height: 2px;
+      background: var(--gold-accent);
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      color: #afafaf;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold-accent);
+    }
+
+    .social-icon-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #222222;
+      color: #ffffff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      margin-right: 8px;
+      transition: background 0.2s;
+    }
+
+    .social-icon-btn:hover {
+      background: var(--gold-dark);
+      color: #ffffff;
+    }
+
+    .coupon-field-group .form-control {
+      background: #222222;
+      border: 1px solid #333333;
+      color: #ffffff;
+      font-size: 13px;
+      border-radius: 6px 0 0 6px;
+    }
+
+    .coupon-field-group .form-control::placeholder {
+      color: #888888;
+    }
+
+    .coupon-field-group .btn {
+      background: var(--gold-accent);
+      color: #111111;
+      font-weight: 700;
+      font-size: 12px;
+      border-radius: 0 6px 6px 0;
+    }
+
+    .footer-bottom-row {
+      border-top: 1px solid #242424;
+      margin-top: 45px;
+      padding-top: 20px;
+      text-align: center;
+      font-size: 12px;
+      color: #888888;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== 1. TOP ANNOUNCEMENT BAR ==================== -->
+  <div class="top-announcement-bar">
+    <span class="nav-arrow">&lt;</span>
+    <span>SHOP WITH CONFIDENCE &nbsp;|&nbsp; FREE SHIPPING ABOVE ₹999 &nbsp;|&nbsp; DISPATCHED WITHIN 24 HOURS</span>
+    <span class="nav-arrow">&gt;</span>
+  </div>
+
+  <!-- ==================== 2. HEADER (Exact OmartFashion layout) ==================== -->
+  <header class="site-header">
+    <div class="container py-2">
+      <div class="d-flex align-items-center justify-content-between">
+        
+        <!-- Left: Hamburger + Search -->
+        <div class="d-flex align-items-center gap-2">
+          <button class="header-icon-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#navDrawer" aria-label="Open Menu">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <button class="header-icon-btn" type="button" data-bs-toggle="modal" data-bs-target="#searchModal" aria-label="Search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+
+        <!-- Center: Circular Badge + SOMAIYA MEN'S WEAR Logo -->
+        <a href="index.html" class="brand-logo-container">
+          <div class="brand-badge-circle">
+            <div class="circle-inner">SMW</div>
+          </div>
+          <div class="brand-text-block">
+            <h1 class="brand-name">SOMAIYA MEN'S WEAR</h1>
+            <span class="brand-tagline">Clothing for the Trend! Bhandup Store</span>
+          </div>
+        </a>
+
+        <!-- Right: User / Staff Dropdown + Bag with Badge -->
+        <div class="d-flex align-items-center gap-2">
+          <div class="dropdown">
+            <button class="header-icon-btn dropdown-toggle no-arrow" type="button" id="userMenuBtn" data-bs-toggle="dropdown" aria-expanded="false" aria-label="User Account">
+              <i class="fa-regular fa-user"></i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end shadow border-0 py-2" aria-labelledby="userMenuBtn" style="font-size: 13px; min-width: 230px; border-radius: 12px;">
+              <li><h6 class="dropdown-header text-uppercase fw-bold text-dark" style="font-size: 11px; letter-spacing: 1px;">Men's Wardrobe</h6></li>
+              <li><a class="dropdown-item" href="#newDropSection"><i class="fa-solid fa-shirt me-2 text-muted"></i>Shop All Shirts &amp; Kurtas</a></li>
+              <li><a class="dropdown-item" href="#contactSection"><i class="fa-solid fa-location-dot me-2 text-muted"></i>Bhandup West Store</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><h6 class="dropdown-header text-uppercase fw-bold text-dark" style="font-size: 11px; letter-spacing: 1px;">Store Portal (Mam)</h6></li>
+              <li>
+                <a class="dropdown-item fw-bold text-dark" href="admin.html">
+                  <i class="fa-solid fa-user-shield me-2 text-warning"></i>Mam's Inventory &amp; POS Desk
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Shopping Bag Button -->
+          <button class="header-icon-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#cartDrawer" aria-label="Open Cart">
+            <i class="fa-solid fa-bag-shopping"></i>
+            <span class="cart-badge" id="cartBadgeCount">0</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== 3. HERO SECTION (4 Male Models - OmartFashion Exact) ==================== -->
+  <section class="hero-banner-omf">
+    <div class="hero-bg-wrapper">
+      <img src="/assets/hero/hero_male_models.jpg" alt="Somaiya Men's Wear New Arrivals 4 Male Models" class="hero-bg-img">
+      <div class="hero-overlay-content">
+        <!-- Top tag -->
+        <div>
+          <span class="hero-tag-pill">
+            <i class="fa-solid fa-crown me-1 text-warning"></i> 100% EXCLUSIVE MEN'S WEAR
+          </span>
+          <h2 class="hero-headline">NEW ARRIVALS</h2>
+          <p class="hero-subheadline">FRESH STYLES. MADE FOR YOU.</p>
+        </div>
+
+        <!-- Center Timeless Fits Box -->
+        <div class="hero-center-box">
+          <h6>DISCOVER YOUR NEXT LOOK</h6>
+          <p>TIMELESS FITS. EVERYDAY COMFORT</p>
+        </div>
+
+        <!-- Bottom CTA -->
+        <div>
+          <a href="#newDropSection" class="btn-hero-action">
+            <span>SHOP NOW</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 4. LOOPING MARQUEE ==================== -->
+  <div class="marquee-container">
+    <div class="marquee-track">
+      TRUSTED BY 50K+ HAPPY CUSTOMERS • ORDERS DISPATCHED WITHIN 24 HOURS • FREE SHIPPING ABOVE ₹999 • 100% MEN'S PREMIUM COTTON • EASY EXCHANGE • 
+      TRUSTED BY 50K+ HAPPY CUSTOMERS • ORDERS DISPATCHED WITHIN 24 HOURS • FREE SHIPPING ABOVE ₹999 • 100% MEN'S PREMIUM COTTON • EASY EXCHANGE • 
+      TRUSTED BY 50K+ HAPPY CUSTOMERS • ORDERS DISPATCHED WITHIN 24 HOURS • FREE SHIPPING ABOVE ₹999 • 100% MEN'S PREMIUM COTTON • EASY EXCHANGE • 
+    </div>
+  </div>
+
+  <!-- ==================== 5. SHOP BY CATEGORY (4 Exact Male Categories) ==================== -->
+  <section class="categories-section" id="categoriesSection">
+    <div class="container">
+      <h2 class="section-title">SHOP BY CATEGORY</h2>
+      <div class="row g-3 g-md-4">
+        
+        <!-- Category 1: Shirts (Male Brown Shirt) -->
+        <div class="col-6 col-md-3">
+          <div class="category-card-omf" onclick="filterCategory('Shirts')">
+            <img src="/assets/categories/cat_shirts_male.jpg" alt="Men's Shirts - Male Brown Shirt" class="category-card-img">
+            <div class="category-label">Shirts</div>
+          </div>
+        </div>
+
+        <!-- Category 2: Short Kurta (Male Blue Kurta) -->
+        <div class="col-6 col-md-3">
+          <div class="category-card-omf" onclick="filterCategory('Short Kurta')">
+            <img src="/assets/categories/cat_kurta_male.jpg" alt="Men's Short Kurta - Male Blue Kurta" class="category-card-img">
+            <div class="category-label">Short Kurta</div>
+          </div>
+        </div>
+
+        <!-- Category 3: T-shirts (Male Beige T-Shirt) -->
+        <div class="col-6 col-md-3">
+          <div class="category-card-omf" onclick="filterCategory('T-shirts')">
+            <img src="/assets/categories/cat_tshirts_male.jpg" alt="Men's T-shirts - Male Beige T-shirt" class="category-card-img">
+            <div class="category-label">T-shirts</div>
+          </div>
+        </div>
+
+        <!-- Category 4: Bottoms (Male Cargo Pant) -->
+        <div class="col-6 col-md-3">
+          <div class="category-card-omf" onclick="filterCategory('Bottoms')">
+            <img src="/assets/categories/cat_bottoms_male.jpg" alt="Men's Bottoms - Male Cargo Pant" class="category-card-img">
+            <div class="category-label">Bottoms</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 6. NEW DROP SECTION (100% Male Models Only) ==================== -->
+  <section class="new-drop-section" id="newDropSection">
+    <div class="container">
+      <div class="section-header-row">
+        <h2 id="dropSectionHeading">NEW DROP</h2>
+        <div class="d-flex align-items-center gap-3">
+          <button class="btn btn-sm btn-outline-dark rounded-pill px-3 py-1" id="clearFilterBtn" style="display: none;" onclick="filterCategory('All')">
+            <i class="fa-solid fa-xmark me-1"></i> Clear Filter
+          </button>
+          <a class="view-all-link" onclick="filterCategory('All')">View all</a>
+        </div>
+      </div>
+
+      <!-- Products Grid (Populated dynamically via JS) -->
+      <div class="row g-3 g-md-4" id="productsGridContainer">
+        <!-- Rendered items with Sale badge, Bag+ icon, Rs.799, Rs.1249 -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 7. FOOTER (#111, 4 Columns) ==================== -->
+  <footer class="site-footer" id="contactSection">
+    <div class="container">
+      <div class="row g-4">
+        
+        <!-- Col 1: Brand Info -->
+        <div class="col-lg-3 col-md-6">
+          <div class="d-flex align-items-center gap-2 mb-3">
+            <div class="brand-badge-circle" style="width: 36px; height: 36px;">
+              <div class="circle-inner" style="width: 30px; height: 30px; font-size: 9px;">SMW</div>
+            </div>
+            <div class="brand-name text-white" style="font-size: 17px;">SOMAIYA MEN'S WEAR</div>
+          </div>
+          <p class="text-white-50 small mb-3" style="line-height: 1.6;">
+            Exclusive men's wear fashion hub in Bhandup West, Mumbai. Premium resort shirts, traditional festive short kurtas, luxury knit tees, and relaxed fit cargo pants. <strong>No ladies collection &mdash; dedicated 100% to men's style.</strong>
+          </p>
+          <span class="badge bg-warning text-dark fw-bold"><i class="fa-solid fa-shield-check me-1"></i> 50,000+ Happy Men</span>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-heading">QUICK LINKS</div>
+          <ul class="footer-links">
+            <li><a href="#newDropSection" onclick="filterCategory('All')">All Men's Collections</a></li>
+            <li><a href="#newDropSection" onclick="filterCategory('Shirts')">Printed Resort Shirts</a></li>
+            <li><a href="#newDropSection" onclick="filterCategory('Short Kurta')">Festive Short Kurtas</a></li>
+            <li><a href="#newDropSection" onclick="filterCategory('Bottoms')">Korean Cargo &amp; Chinos</a></li>
+            <li><a href="javascript:void(0)" onclick="showModalPolicy('Shipping & Delivery', 'Pan-India express delivery. Free shipping on all orders above ₹999. Dispatched within 24 hours directly from Bhandup West warehouse.')">Shipping Policy</a></li>
+            <li><a href="javascript:void(0)" onclick="showModalPolicy('7-Day Exchange Policy', 'We offer seamless size exchange and replacement within 7 days of delivery.')">Returns &amp; Exchange</a></li>
+            <li><a href="admin.html" class="text-warning fw-semibold"><i class="fa-solid fa-lock me-1"></i> Mam's Admin &amp; POS Desk</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Contact Us & Bhandup Location -->
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-heading">CONTACT US</div>
+          <div class="text-white-50 small mb-2">
+            <strong class="text-white d-block mb-1" style="font-size: 13.5px;">
+              <i class="fa-solid fa-store me-1 text-warning"></i> SOMAIYA MEN'S WEAR - Bhandup Store
+            </strong>
+            <div class="text-white-50 mb-1">
+              <i class="fa-solid fa-location-dot me-1 text-danger"></i> LBS Marg, Bhandup West, Mumbai - 400078
+            </div>
+            <div class="text-white mb-1">
+              <i class="fa-solid fa-phone me-1 text-warning"></i> Phone: 
+              <a href="tel:+918356076145" class="text-white text-decoration-none fw-bold">+91 8356076145</a>
+            </div>
+            <div class="text-white mb-2">
+              <i class="fa-brands fa-whatsapp me-1 text-success"></i> WhatsApp: 
+              <a href="https://wa.me/918356076145?text=Hi%20SOMAIYA%20MEN'S%20WEAR%20Bhandup%20-%20Mala%20product%20pahije" target="_blank" class="text-white text-decoration-none fw-bold">+91 8356076145</a>
+            </div>
+          </div>
+
+          <!-- Google Map Embed: LBS Marg Bhandup West -->
+          <div class="rounded-3 overflow-hidden border border-secondary border-opacity-50 shadow-sm" style="height: 125px;">
+            <iframe 
+              src="https://maps.google.com/maps?q=LBS%20Marg,%20Bhandup%20West,%20Mumbai%20400078&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+              width="100%" 
+              height="100%" 
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade"
+              title="SOMAIYA MEN'S WEAR - Bhandup Store Map Location">
+            </iframe>
+          </div>
+        </div>
+
+        <!-- Col 4: Follow Us & Coupons -->
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-heading">FOLLOW US</div>
+          <div class="mb-4">
+            <a href="https://instagram.com" target="_blank" class="social-icon-btn" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://facebook.com" target="_blank" class="social-icon-btn" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://wa.me/918356076145?text=Hi%20SOMAIYA%20MEN'S%20WEAR%20Bhandup%20-%20Mala%20product%20pahije" target="_blank" class="social-icon-btn" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          </div>
+
+          <div class="footer-heading" style="font-size: 13px; margin-bottom: 12px;">GET ₹150 OFF COUPON</div>
+          <div class="input-group coupon-field-group">
+            <input type="email" id="newsletterEmailInput" class="form-control" placeholder="Enter your email" aria-label="Newsletter email">
+            <button class="btn" type="button" onclick="handleCouponSubscribe()">CLAIM</button>
+          </div>
+          <div id="newsletterSuccessMsg" class="text-success small mt-2" style="display: none;"></div>
+        </div>
+
+      </div>
+
+      <!-- Copyright Bar -->
+      <div class="footer-bottom-row d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+        <div>
+          &copy; 2026 SOMAIYA MEN'S WEAR - BHANDUP STORE. ALL RIGHTS RESERVED. 100% MEN'S FASHION.
+        </div>
+        <div class="d-flex align-items-center gap-3">
+          <span class="badge bg-secondary">COD AVAILABLE</span>
+          <span class="badge bg-secondary">UPI &bull; GPAY &bull; PHONEPE</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== 8. FLOATING WHATSAPP BUTTON ==================== -->
+  <a href="https://wa.me/918356076145?text=Hi%20SOMAIYA%20MEN'S%20WEAR%20Bhandup%20-%20Mala%20product%20pahije" 
+     target="_blank" 
+     class="floating-whatsapp-omf" 
+     aria-label="WhatsApp Chat with us">
+    <i class="fa-brands fa-whatsapp"></i>
+    <span>Chat with us</span>
+  </a>
+
+  <!-- ==================== 9. MOBILE BOTTOM STICKY BAR ==================== -->
+  <div class="mobile-sticky-bar" id="mobileStickyBar">
+    <div class="d-flex align-items-center overflow-hidden me-2">
+      <img id="stickyThumbImg" src="/assets/products/shirt_yellow_watercolor.jpg" alt="Thumb" class="sticky-thumb">
+      <div class="text-truncate">
+        <div class="fw-bold text-truncate" id="stickyProdTitle" style="font-size: 12px; color: #111;">
+          Abstract Watercolor Printed Shirt
+        </div>
+        <div class="d-flex align-items-center gap-2" style="font-size: 11.5px;">
+          <span class="badge bg-dark" id="stickySizeBadge">L</span>
+          <span class="fw-bold text-dark" id="stickyPriceText">Rs. 799.00</span>
+          <span class="text-muted text-decoration-line-through small" id="stickyCutPriceText">Rs. 1,249.00</span>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-dark rounded-pill px-3 py-2 fw-bold text-nowrap d-flex align-items-center gap-2" style="font-size: 12px;" onclick="openActiveProductModal()">
+      <i class="fa-solid fa-bag-shopping"></i> ADD TO BAG
+    </button>
+  </div>
+
+  <!-- ==================== 10. PRODUCT DETAIL MODAL (Exact OmartFashion Screenshot) ==================== -->
+  <div class="modal fade" id="productDetailModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content border-0 rounded-4 overflow-hidden shadow-lg">
+        
+        <!-- Top COD Banner (Exact) -->
+        <div class="modal-cod-banner">
+          <span>&lt;</span>
+          <span><i class="fa-solid fa-box me-1 text-warning"></i> COD AVAILABLE &nbsp;|&nbsp; DISPATCHED IN 24H</span>
+          <span>&gt;</span>
+        </div>
+
+        <div class="modal-body p-3 p-md-4 position-relative">
+          <button type="button" class="btn-close position-absolute top-0 end-0 m-3 z-3" data-bs-dismiss="modal" aria-label="Close"></button>
+
+          <div class="row g-4">
+            <!-- Left: Male Model Photo -->
+            <div class="col-md-6">
+              <div class="rounded-3 overflow-hidden bg-light" style="max-height: 440px;">
+                <img id="modalMainImage" src="" alt="Men's Fashion Model" class="w-100 object-fit-cover d-block" style="height: 420px; object-position: center top;">
+              </div>
+            </div>
+
+            <!-- Right: Details, Sizes, Buy Actions -->
+            <div class="col-md-6">
+              <span class="badge bg-dark mb-2 text-uppercase" id="modalCategoryBadge" style="letter-spacing: 1px; font-size: 10px;">
+                Shirts
+              </span>
+
+              <h3 class="fw-bold mb-1 text-dark" id="modalProductTitle" style="font-size: 20px;">
+                Abstract Watercolor Printed Shirt
+              </h3>
+
+              <!-- Price: Rs. 799.00 Rs. 1,249.00 -->
+              <div class="d-flex align-items-baseline gap-2 my-2">
+                <span class="fs-4 fw-extrabold text-dark" id="modalPriceBold">Rs. 799.00</span>
+                <span class="text-muted text-decoration-line-through fs-6" id="modalPriceCut">Rs. 1,249.00</span>
+                <span class="badge bg-success-subtle text-success border border-success-subtle fw-bold ms-1" id="modalDiscountTag">36% OFF</span>
+              </div>
+
+              <div class="text-muted small mb-3">
+                <i class="fa-solid fa-check-circle text-success me-1"></i> In Stock &bull; 100% Men's Wear
+              </div>
+
+              <hr class="my-3">
+
+              <!-- Size Selector (M, L, XL, XXL) -->
+              <div class="mb-3">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <span class="fw-bold text-dark small text-uppercase">Size:</span>
+                  <a href="javascript:void(0)" onclick="showModalPolicy('Men\'s Size Chart', 'Chest Measurements:<br>• Size M: 38 - 40 in<br>• Size L: 40 - 42 in<br>• Size XL: 42 - 44 in<br>• Size XXL: 44 - 46 in')" class="text-muted small text-decoration-underline">Size Guide</a>
+                </div>
+                <div class="d-flex gap-2" id="modalSizeButtonGroup">
+                  <button type="button" class="size-box-omf" onclick="setModalSize('M', this)">M</button>
+                  <button type="button" class="size-box-omf active" onclick="setModalSize('L', this)">L</button>
+                  <button type="button" class="size-box-omf" onclick="setModalSize('XL', this)">XL</button>
+                  <button type="button" class="size-box-omf" onclick="setModalSize('XXL', this)">XXL</button>
+                </div>
+              </div>
+
+              <!-- Quantity Selector -->
+              <div class="mb-4">
+                <span class="fw-bold text-dark small text-uppercase d-block mb-2">Quantity:</span>
+                <div class="d-inline-flex align-items-center border rounded-2 overflow-hidden bg-white">
+                  <button class="btn btn-sm btn-light px-3 py-2 fw-bold" onclick="adjustModalQty(-1)">-</button>
+                  <span class="px-3 fw-bold" id="modalQtyDisplay">1</span>
+                  <button class="btn btn-sm btn-light px-3 py-2 fw-bold" onclick="adjustModalQty(1)">+</button>
+                </div>
+              </div>
+
+              <!-- Action Buttons: Add to Bag & BUY NOW -->
+              <div class="d-grid gap-2 mb-4">
+                <button class="btn btn-add-bag-outline" onclick="addModalItemToCart()">
+                  <i class="fa-solid fa-bag-shopping me-2"></i> ADD TO CART
+                </button>
+                <button class="btn btn-buy-now-black" onclick="quickBuyNow()">
+                  <span>BUY NOW</span>
+                  <span class="badge bg-light text-dark fw-bold ms-2 py-1 px-2" style="font-size: 11px;">
+                    <i class="fa-brands fa-google-pay me-1"></i> UPI / COD
+                  </span>
+                </button>
+              </div>
+
+              <!-- Product Details Bullets -->
+              <div class="border rounded-3 p-3 bg-light">
+                <h6 class="fw-bold text-dark mb-2 small text-uppercase" style="letter-spacing: 0.5px;">Product Details</h6>
+                <div class="small text-secondary mb-1">• <strong>Fabric:</strong> <span id="modalFabricText">Premium 100% Cotton</span></div>
+                <div class="small text-secondary mb-1">• <strong>Print:</strong> <span id="modalPrintText">Abstract Watercolor Print</span></div>
+                <div class="small text-secondary mb-1">• <strong>Fit:</strong> <span id="modalFitText">Regular Men's Comfort Fit</span></div>
+                <div class="small text-secondary mb-1">• <strong>Colour:</strong> <span id="modalColourText">Mustard Yellow</span></div>
+                <div class="small text-secondary">• <strong>Model:</strong> Male model wears Size L (Height 6'1", Chest 40")</div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== OFFCANVAS CART DRAWER ==================== -->
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="cartDrawer" style="width: 390px; max-width: 90vw;">
+    <div class="offcanvas-header border-bottom">
+      <h5 class="offcanvas-title fw-bold" style="font-size: 16px;">
+        <i class="fa-solid fa-bag-shopping me-2"></i> YOUR SHOPPING BAG
+      </h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    
+    <div class="offcanvas-body d-flex flex-column">
+      <!-- Free Shipping Tracker -->
+      <div class="bg-light p-3 rounded-3 mb-3 border">
+        <div class="d-flex justify-content-between small fw-bold mb-1">
+          <span id="shippingNoticeText">Free Shipping unlocked above ₹999</span>
+          <span id="shippingPercentText">0%</span>
+        </div>
+        <div class="progress" style="height: 6px;">
+          <div class="progress-bar bg-success" id="shippingProgressBar" role="progressbar" style="width: 0%"></div>
+        </div>
+      </div>
+
+      <!-- Items List -->
+      <div class="flex-grow-1 overflow-auto" id="cartItemsList">
+        <!-- Rendered items -->
+      </div>
+
+      <!-- Checkout Footer -->
+      <div class="border-top pt-3 mt-auto">
+        <div class="d-flex justify-content-between mb-1 small">
+          <span class="text-muted">Subtotal</span>
+          <span class="fw-bold" id="cartSubtotalText">Rs. 0</span>
+        </div>
+        <div class="d-flex justify-content-between mb-2 small">
+          <span class="text-muted">Delivery</span>
+          <span class="text-success fw-bold" id="cartShippingFeeText">Calculated at Checkout</span>
+        </div>
+        <div class="d-flex justify-content-between mb-3 fs-5 fw-extrabold text-dark">
+          <span>Total</span>
+          <span id="cartGrandTotalText">Rs. 0</span>
+        </div>
+
+        <button class="btn btn-dark w-100 py-3 rounded-3 fw-bold text-uppercase d-flex align-items-center justify-content-center gap-2" id="proceedCheckoutBtn" onclick="openCustomerCheckoutModal()" disabled>
+          <span>PROCEED TO CHECKOUT</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+        <p class="text-center text-muted small mt-2 mb-0" style="font-size: 11px;">
+          <i class="fa-solid fa-truck-fast text-success me-1"></i> Dispatched in 24h &bull; Cash on Delivery Available
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== CHECKOUT MODAL ==================== -->
+  <div class="modal fade" id="checkoutOrderModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4 border-0">
+        <div class="modal-header bg-dark text-white">
+          <h5 class="modal-title fw-bold" style="font-size: 15px;">
+            <i class="fa-solid fa-shield-halved me-2 text-warning"></i> SOMAIYA SECURE CHECKOUT
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <form id="customerOrderForm" onsubmit="handlePlaceCustomerOrder(event)">
+            
+            <div class="mb-3">
+              <label class="form-label small fw-bold text-uppercase">Full Name *</label>
+              <input type="text" class="form-control" id="orderCustName" placeholder="e.g. Vicky Rane" required>
+            </div>
+
+            <div class="row g-2 mb-3">
+              <div class="col-6">
+                <label class="form-label small fw-bold text-uppercase">Mobile *</label>
+                <div class="input-group">
+                  <span class="input-group-text small">+91</span>
+                  <input type="tel" class="form-control" id="orderCustPhone" placeholder="9820012345" pattern="[0-9]{10}" required>
+                </div>
+              </div>
+              <div class="col-6">
+                <label class="form-label small fw-bold text-uppercase">City / Area *</label>
+                <input type="text" class="form-control" id="orderCustCity" placeholder="Bhandup, Mumbai" required>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label small fw-bold text-uppercase">Delivery Address *</label>
+              <textarea class="form-control" id="orderCustAddress" rows="2" placeholder="Flat No, Building, Landmark, Pincode" required></textarea>
+            </div>
+
+            <!-- Payment Mode -->
+            <label class="form-label small fw-bold text-uppercase">Payment Mode</label>
+            <div class="border rounded-3 p-3 mb-3 bg-light">
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="orderPayment" id="orderPayCOD" value="Cash on Delivery (COD)" checked>
+                <label class="form-check-label fw-bold" for="orderPayCOD">
+                  <i class="fa-solid fa-truck-ramp-box text-success me-1"></i> Cash on Delivery (COD)
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="orderPayment" id="orderPayUPI" value="Instant UPI / Google Pay">
+                <label class="form-check-label fw-bold" for="orderPayUPI">
+                  <i class="fa-brands fa-google-pay text-primary me-1"></i> Google Pay / PhonePe / Paytm UPI
+                </label>
+              </div>
+            </div>
+
+            <div class="bg-white p-3 border rounded-3 mb-3 d-flex justify-content-between align-items-center">
+              <span class="fw-bold">Payable Amount:</span>
+              <span class="fs-5 fw-extrabold text-danger" id="orderCheckoutTotalAmount">Rs. 0</span>
+            </div>
+
+            <button type="submit" class="btn btn-dark w-100 py-3 fw-bold text-uppercase rounded-3">
+              <i class="fa-solid fa-check me-2"></i> CONFIRM &amp; PLACE ORDER
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ORDER SUCCESS MODAL -->
+  <div class="modal fade" id="orderSuccessDialog" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content text-center p-4 rounded-4 border-0">
+        <div class="mx-auto mb-3" style="width: 64px; height: 64px; border-radius: 50%; background: #e8f5e9; color: #2e7d32; display: flex; align-items: center; justify-content: center; font-size: 30px;">
+          <i class="fa-solid fa-check"></i>
+        </div>
+        <h4 class="fw-bold mb-1">Order Confirmed!</h4>
+        <p class="text-muted small mb-2">Order ID: <strong id="successOrderIdDisplay" class="text-dark">SMW-83921</strong></p>
+        <p class="text-secondary small mb-4" id="successOrderBody">
+          Your men's wear package will be dispatched within 24 hours from our Bhandup warehouse.
+        </p>
+        <div class="d-grid gap-2">
+          <button type="button" class="btn btn-dark py-2 rounded-3 fw-bold" data-bs-dismiss="modal">
+            Continue Shopping
+          </button>
+          <a href="admin.html" class="btn btn-outline-secondary py-2 rounded-3 small">
+            View in Mam's Admin Portal
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEARCH MODAL -->
+  <div class="modal fade" id="searchModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content p-3 rounded-4 border-0">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h6 class="fw-bold mb-0 text-uppercase" style="letter-spacing: 1px;">Search Men's Collection</h6>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <input type="text" class="form-control rounded-pill py-2 px-3 mb-3 border-2 border-dark" id="searchInput" placeholder="Search printed shirts, short kurta, t-shirts, cargo..." onkeyup="performSearch(this.value)">
+        <div id="searchResultsBox" class="overflow-auto" style="max-height: 280px;">
+          <div class="text-muted small text-center py-3">Type any keyword above to search catalog.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GENERIC POLICY MODAL -->
+  <div class="modal fade" id="policyModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4">
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold" id="policyModalTitle">Information</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body small" id="policyModalBody" style="line-height: 1.6;">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HAMBURGER OFFCANVAS -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="navDrawer" style="width: 320px;">
+    <div class="offcanvas-header border-bottom">
+      <div class="d-flex align-items-center gap-2">
+        <div class="brand-badge-circle" style="width: 34px; height: 34px;">
+          <div class="circle-inner" style="width: 28px; height: 28px; font-size: 8px;">SMW</div>
+        </div>
+        <div>
+          <div class="fw-bold" style="font-size: 15px;">SOMAIYA MEN'S WEAR</div>
+          <div class="text-muted" style="font-size: 9px;">100% Men's Wear</div>
+        </div>
+      </div>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body p-0">
+      <div class="list-group list-group-flush">
+        <a href="#newDropSection" class="list-group-item list-group-item-action py-3 fw-bold" data-bs-dismiss="offcanvas" onclick="filterCategory('All')">
+          <i class="fa-solid fa-fire me-2 text-danger"></i> All Men's Drops
+        </a>
+        <a href="#newDropSection" class="list-group-item list-group-item-action py-3 fw-bold" data-bs-dismiss="offcanvas" onclick="filterCategory('Shirts')">
+          <i class="fa-solid fa-shirt me-2 text-primary"></i> Men's Printed Shirts
+        </a>
+        <a href="#newDropSection" class="list-group-item list-group-item-action py-3 fw-bold" data-bs-dismiss="offcanvas" onclick="filterCategory('Short Kurta')">
+          <i class="fa-solid fa-vest me-2 text-warning"></i> Festive Short Kurtas
+        </a>
+        <a href="#newDropSection" class="list-group-item list-group-item-action py-3 fw-bold" data-bs-dismiss="offcanvas" onclick="filterCategory('T-shirts')">
+          <i class="fa-solid fa-circle-dot me-2 text-info"></i> Men's Knit &amp; Oversized T-Shirts
+        </a>
+        <a href="#newDropSection" class="list-group-item list-group-item-action py-3 fw-bold" data-bs-dismiss="offcanvas" onclick="filterCategory('Bottoms')">
+          <i class="fa-solid fa-socks me-2 text-secondary"></i> Men's Cargo &amp; Bottoms
+        </a>
+        <a href="#contactSection" class="list-group-item list-group-item-action py-3 fw-bold" data-bs-dismiss="offcanvas">
+          <i class="fa-solid fa-location-dot me-2 text-danger"></i> Bhandup West Store
+        </a>
+        <a href="admin.html" class="list-group-item list-group-item-action py-3 fw-bold text-warning bg-dark">
+          <i class="fa-solid fa-lock me-2"></i> Mam's Admin &amp; POS Portal
+        </a>
+      </div>
+
+      <div class="p-3 mt-4 text-muted small">
+        <p class="mb-1 fw-bold text-dark">Need sizing or custom fitting?</p>
+        <p class="mb-2">Call Bhandup West Store Counter:</p>
+        <a href="tel:+918356076145" class="btn btn-sm btn-outline-dark w-100 fw-bold mb-2">
+          <i class="fa-solid fa-phone me-1 text-warning"></i> +91 8356076145
+        </a>
+        <a href="https://wa.me/918356076145?text=Hi%20SOMAIYA%20MEN'S%20WEAR%20Bhandup%20-%20Mala%20product%20pahije" target="_blank" class="btn btn-sm text-white w-100 fw-bold" style="background-color: #25D366;">
+          <i class="fa-brands fa-whatsapp me-1"></i> WhatsApp Bhandup Store
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap 5.3 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- STORE SCRIPTS (100% MEN'S WEAR ONLY) -->
+  <script>
+    const DB_KEY = 'SOMAIYA_INVENTORY_PRODUCTS';
+    const SALES_KEY = 'SOMAIYA_SALES_RECORDS';
+
+    // 100% MALE ONLY CATALOG (Zero ladies/women images)
+    const MENS_CATALOG = [
+      {
+        id: "prod-1",
+        productKey: "abstract watercolor printed shirt mustard_l_mustard yellow",
+        name: "Abstract Watercolor Printed Shirt Mustard",
+        category: "Shirts",
+        price: 799,
+        originalPrice: 1249,
+        discountPercent: 36,
+        size: "L",
+        availableSizes: ["M", "L", "XL", "XXL"],
+        colour: "Mustard Yellow",
+        fabric: "Premium 100% Cotton",
+        fit: "Regular Fit",
+        qty: 18,
+        minQty: 5,
+        purchasePrice: 390,
+        supplier: "Vasai Handlooms",
+        image: "/assets/products/shirt_yellow_watercolor.jpg",
+        detailImage: "/assets/products/shirt_yellow_watercolor_detail.jpg",
+        isNewDrop: true
+      },
+      {
+        id: "prod-2",
+        productKey: "abstract watercolor printed shirt coral pink_l_coral pink",
+        name: "Abstract Watercolor Printed Shirt Coral Pink",
+        category: "Shirts",
+        price: 799,
+        originalPrice: 1249,
+        discountPercent: 36,
+        size: "L",
+        availableSizes: ["M", "L", "XL", "XXL"],
+        colour: "Coral Pink",
+        fabric: "Premium 100% Cotton",
+        fit: "Regular Fit",
+        qty: 14,
+        minQty: 5,
+        purchasePrice: 390,
+        supplier: "Surat Weaves",
+        image: "/assets/products/shirt_pink_watercolor.jpg",
+        detailImage: "/assets/products/shirt_pink_watercolor.jpg",
+        isNewDrop: true
+      },
+      {
+        id: "prod-3",
+        productKey: "abstract floral printed casual shirt blue_m_white blue",
+        name: "Abstract Floral Printed Casual Shirt Blue",
+        category: "Shirts",
+        price: 799,
+        originalPrice: 1249,
+        discountPercent: 36,
+        size: "M",
+        availableSizes: ["M", "L", "XL", "XXL"],
+        colour: "White & Blue Floral",
+        fabric: "Soft Breathable Cotton",
+        fit: "Casual Comfort",
+        qty: 16,
+        minQty: 5,
+        purchasePrice: 390,
+        supplier: "Vasai Handlooms",
+        image: "/assets/products/shirt_blue_floral.jpg",
+        detailImage: "/assets/products/shirt_blue_floral.jpg",
+        isNewDrop: true
+      },
+      {
+        id: "prod-4",
+        productKey: "abstract floral printed casual shirt olive brown_l_olive brown",
+        name: "Abstract Floral Printed Casual Shirt Olive Brown",
+        category: "Shirts",
+        price: 799,
+        originalPrice: 1249,
+        discountPercent: 36,
+        size: "L",
+        availableSizes: ["M", "L", "XL", "XXL"],
+        colour: "Olive Gold & Brown Floral",
+        fabric: "Soft Breathable Cotton",
+        fit: "Casual Comfort",
+        qty: 15,
+        minQty: 5,
+        purchasePrice: 390,
+        supplier: "Surat Weaves",
+        image: "/assets/products/shirt_brown_floral.jpg",
+        detailImage: "/assets/products/shirt_brown_floral.jpg",
+        isNewDrop: true
+      },
+      {
+        id: "prod-5",
+        productKey: "royal ethnic short kurta white_l_white",
+        name: "Royal Ethnic Short Kurta White",
+        category: "Short Kurta",
+        price: 849,
+        originalPrice: 1399,
+        discountPercent: 39,
+        size: "L",
+        availableSizes: ["M", "L", "XL", "XXL"],
+        colour: "Pristine White",
+        fabric: "100% Slub Cotton Khadi",
+        fit: "Traditional Ethnic",
+        qty: 12,
+        minQty: 4,
+        purchasePrice: 420,
+        supplier: "Ahmedabad Mills",
+        image: "https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?q=80&w=700",
+        detailImage: "https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?q=80&w=700",
+        isNewDrop: true
+      },
+      {
+        id: "prod-6",
+        productKey: "striped linen short kurta blue_l_blue",
+        name: "Striped Linen Short Kurta Blue",
+        category: "Short Kurta",
+        price: 899,
+        originalPrice: 1449,
+        discountPercent: 38,
+        size: "L",
+        availableSizes: ["M", "L", "XL"],
+        colour: "Indigo Blue Stripe",
+        fabric: "Pure Linen Blend",
+        fit: "Comfort Ethnic",
+        qty: 10,
+        minQty: 4,
+        purchasePrice: 450,
+        supplier: "Surat Weaves",
+        image: "/assets/categories/cat_kurta_male.jpg",
+        detailImage: "/assets/categories/cat_kurta_male.jpg",
+        isNewDrop: true
+      },
+      {
+        id: "prod-7",
+        productKey: "minimal ribbed knit t-shirt beige_m_beige",
+        name: "Minimal Ribbed Knit T-Shirt Beige",
+        category: "T-shirts",
+        price: 699,
+        originalPrice: 1199,
+        discountPercent: 42,
+        size: "M",
+        availableSizes: ["S", "M", "L", "XL"],
+        colour: "Oatmeal Beige",
+        fabric: "240 GSM Ribbed Combed Cotton",
+        fit: "Tailored Smart Casual",
+        qty: 20,
+        minQty: 5,
+        purchasePrice: 320,
+        supplier: "Tirupur Knits",
+        image: "/assets/categories/cat_tshirts_male.jpg",
+        detailImage: "/assets/categories/cat_tshirts_male.jpg",
+        isNewDrop: true
+      },
+      {
+        id: "prod-8",
+        productKey: "relaxed wide leg cargo pant stone_l_stone",
+        name: "Relaxed Wide Leg Cargo Pant Stone",
+        category: "Bottoms",
+        price: 1099,
+        originalPrice: 1699,
+        discountPercent: 35,
+        size: "L",
+        availableSizes: ["M", "L", "XL"],
+        colour: "Stone Khaki",
+        fabric: "Heavyweight Cotton Twill",
+        fit: "Baggy Streetwear Cargo",
+        qty: 9,
+        minQty: 4,
+        purchasePrice: 560,
+        supplier: "Mumbai Weavers",
+        image: "/assets/categories/cat_bottoms_male.jpg",
+        detailImage: "/assets/categories/cat_bottoms_male.jpg",
+        isNewDrop: true
+      }
+    ];
+
+    let products = [];
+    let currentCategory = 'All';
+    let activeProduct = null;
+    let selectedSize = 'L';
+    let selectedQty = 1;
+    let cart = [];
+
+    // Initialize Store
+    function initStore() {
+      // Force update to 100% male catalog
+      localStorage.setItem(DB_KEY, JSON.stringify(MENS_CATALOG));
+      products = [...MENS_CATALOG];
+
+      // Load cart
+      const storedCart = localStorage.getItem('SOMAIYA_CUSTOMER_CART');
+      if (storedCart) {
+        try {
+          cart = JSON.parse(storedCart);
+        } catch(e) {
+          cart = [];
+        }
+      }
+
+      renderProductsGrid();
+      updateCartDisplay();
+
+      if (products.length > 0) {
+        setStickyBar(products[0]);
+      }
+    }
+
+    // Render Product Cards
+    function renderProductsGrid() {
+      const container = document.getElementById('productsGridContainer');
+      const heading = document.getElementById('dropSectionHeading');
+      const clearBtn = document.getElementById('clearFilterBtn');
+
+      if (!container) return;
+
+      const filtered = currentCategory === 'All' 
+        ? products 
+        : products.filter(p => p.category.toLowerCase() === currentCategory.toLowerCase());
+
+      heading.textContent = currentCategory === 'All' ? 'NEW DROP' : `${currentCategory.toUpperCase()} COLLECTION`;
+      clearBtn.style.display = currentCategory === 'All' ? 'none' : 'inline-block';
+
+      container.innerHTML = filtered.map(p => `
+        <div class="col-6 col-md-3">
+          <div class="product-card-omf" onclick="showProductDetails('${p.id}')">
+            <div class="product-img-box">
+              <span class="sale-pill-badge">Sale</span>
+              <img src="${p.image}" alt="${p.name}" loading="lazy">
+              <button class="bag-plus-btn" title="Add to Bag" onclick="event.stopPropagation(); quickAddFromCard('${p.id}')">
+                <i class="fa-solid fa-bag-shopping"></i>
+              </button>
+            </div>
+            <div class="product-details-box">
+              <div class="product-card-title" title="${p.name}">${p.name}</div>
+              <div class="product-price-line">
+                <span class="price-sale-bold">Rs. ${p.price}.00</span>
+                <span class="price-mrp-cut">Rs. ${p.originalPrice || 1249}.00</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterCategory(cat) {
+      currentCategory = cat;
+      renderProductsGrid();
+      const dropSection = document.getElementById('newDropSection');
+      if (dropSection) {
+        dropSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    // Show Detail Modal
+    function showProductDetails(id) {
+      const prod = products.find(p => p.id === id);
+      if (!prod) return;
+
+      activeProduct = prod;
+      selectedSize = prod.size || 'L';
+      selectedQty = 1;
+      setStickyBar(prod);
+
+      document.getElementById('modalMainImage').src = prod.detailImage || prod.image;
+      document.getElementById('modalProductTitle').textContent = prod.name;
+      document.getElementById('modalCategoryBadge').textContent = prod.category;
+      document.getElementById('modalPriceBold').textContent = `Rs. ${prod.price}.00`;
+      document.getElementById('modalPriceCut').textContent = `Rs. ${prod.originalPrice || 1249}.00`;
+      document.getElementById('modalDiscountTag').textContent = `${prod.discountPercent || 36}% OFF`;
+      document.getElementById('modalFabricText').textContent = prod.fabric || 'Premium 100% Breathable Cotton';
+      document.getElementById('modalPrintText').textContent = prod.name.includes('Print') ? 'Abstract Watercolor Handprint' : 'Modern Men\'s Texture';
+      document.getElementById('modalFitText').textContent = prod.fit || 'Regular Men\'s Fit';
+      document.getElementById('modalColourText').textContent = prod.colour || 'Mustard Yellow';
+      document.getElementById('modalQtyDisplay').textContent = selectedQty;
+
+      // Render sizes
+      const sizes = prod.availableSizes || ['M', 'L', 'XL', 'XXL'];
+      const sizeGroup = document.getElementById('modalSizeButtonGroup');
+      sizeGroup.innerHTML = sizes.map(s => `
+        <button type="button" class="size-box-omf ${s === selectedSize ? 'active' : ''}" onclick="setModalSize('${s}', this)">${s}</button>
+      `).join('');
+
+      const modalEl = document.getElementById('productDetailModal');
+      const bsModal = bootstrap.Modal.getOrCreateInstance(modalEl);
+      bsModal.show();
+    }
+
+    function setModalSize(size, btn) {
+      selectedSize = size;
+      const allBtns = document.querySelectorAll('#modalSizeButtonGroup .size-box-omf');
+      allBtns.forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+
+      const stickyBadge = document.getElementById('stickySizeBadge');
+      if (stickyBadge) stickyBadge.textContent = size;
+    }
+
+    function adjustModalQty(delta) {
+      selectedQty = Math.max(1, selectedQty + delta);
+      document.getElementById('modalQtyDisplay').textContent = selectedQty;
+    }
+
+    function addModalItemToCart() {
+      if (!activeProduct) return;
+      addItemToCart(activeProduct, selectedSize, selectedQty);
+
+      const modalEl = document.getElementById('productDetailModal');
+      const bsModal = bootstrap.Modal.getInstance(modalEl);
+      if (bsModal) bsModal.hide();
+
+      openBagDrawer();
+    }
+
+    function quickAddFromCard(id) {
+      const prod = products.find(p => p.id === id);
+      if (!prod) return;
+      addItemToCart(prod, prod.size || 'L', 1);
+      openBagDrawer();
+    }
+
+    function quickBuyNow() {
+      if (!activeProduct) return;
+      addItemToCart(activeProduct, selectedSize, selectedQty);
+
+      const modalEl = document.getElementById('productDetailModal');
+      const bsModal = bootstrap.Modal.getInstance(modalEl);
+      if (bsModal) bsModal.hide();
+
+      openCustomerCheckoutModal();
+    }
+
+    function addItemToCart(prod, size, qty) {
+      const existing = cart.find(i => i.id === prod.id && i.size === size);
+      if (existing) {
+        existing.qty += qty;
+      } else {
+        cart.push({
+          id: prod.id,
+          name: prod.name,
+          price: prod.price,
+          originalPrice: prod.originalPrice,
+          image: prod.image,
+          size: size,
+          colour: prod.colour,
+          qty: qty
+        });
+      }
+      localStorage.setItem('SOMAIYA_CUSTOMER_CART', JSON.stringify(cart));
+      updateCartDisplay();
+    }
+
+    function updateCartDisplay() {
+      const totalUnits = cart.reduce((sum, i) => sum + i.qty, 0);
+      const subtotal = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
+
+      document.getElementById('cartBadgeCount').textContent = totalUnits;
+
+      const listContainer = document.getElementById('cartItemsList');
+      const subtotalEl = document.getElementById('cartSubtotalText');
+      const totalEl = document.getElementById('cartGrandTotalText');
+      const feeEl = document.getElementById('cartShippingFeeText');
+      const btn = document.getElementById('proceedCheckoutBtn');
+      const prog = document.getElementById('shippingProgressBar');
+      const notice = document.getElementById('shippingNoticeText');
+      const pct = document.getElementById('shippingPercentText');
+
+      if (!listContainer) return;
+
+      if (cart.length === 0) {
+        listContainer.innerHTML = `
+          <div class="text-center py-5 text-muted">
+            <i class="fa-solid fa-bag-shopping fs-1 mb-2 text-secondary"></i>
+            <p>Your shopping bag is empty.</p>
+            <button class="btn btn-dark rounded-pill px-4 mt-2" data-bs-dismiss="offcanvas" onclick="filterCategory('All')">Shop Men's Drops</button>
+          </div>
+        `;
+        subtotalEl.textContent = 'Rs. 0';
+        totalEl.textContent = 'Rs. 0';
+        feeEl.textContent = 'Calculated at Checkout';
+        btn.disabled = true;
+        prog.style.width = '0%';
+        notice.textContent = 'Free Shipping above ₹999';
+        pct.textContent = '0%';
+        return;
+      }
+
+      btn.disabled = false;
+      const isFree = subtotal >= 999;
+      const shipCost = isFree ? 0 : 99;
+      const percentVal = Math.min(100, Math.round((subtotal / 999) * 100));
+
+      prog.style.width = `${percentVal}%`;
+      pct.textContent = `${percentVal}%`;
+
+      if (isFree) {
+        notice.innerHTML = `<span class="text-success fw-bold"><i class="fa-solid fa-circle-check me-1"></i> You unlocked FREE Express Delivery!</span>`;
+        feeEl.textContent = 'FREE';
+      } else {
+        const gap = 999 - subtotal;
+        notice.textContent = `Add ₹${gap} more for FREE shipping!`;
+        feeEl.textContent = '₹99';
+      }
+
+      const grand = subtotal + shipCost;
+      subtotalEl.textContent = `Rs. ${subtotal.toLocaleString('en-IN')}`;
+      totalEl.textContent = `Rs. ${grand.toLocaleString('en-IN')}`;
+
+      listContainer.innerHTML = cart.map((item, idx) => `
+        <div class="d-flex gap-3 py-3 border-bottom">
+          <img src="${item.image}" alt="${item.name}" style="width: 65px; height: 75px; border-radius: 8px; object-fit: cover;">
+          <div class="flex-grow-1">
+            <div class="d-flex justify-content-between align-items-start">
+              <div class="fw-bold text-dark small" style="line-height: 1.3;">${item.name}</div>
+              <button class="btn btn-sm text-danger p-0 ms-2" onclick="removeCartItem(${idx})"><i class="fa-solid fa-trash-can"></i></button>
+            </div>
+            <div class="text-muted small my-1">Size: <strong class="text-dark">${item.size}</strong></div>
+            <div class="d-flex justify-content-between align-items-center mt-2">
+              <div class="d-inline-flex border rounded overflow-hidden">
+                <button class="btn btn-sm btn-light py-0 px-2" onclick="changeCartItemQty(${idx}, -1)">-</button>
+                <span class="px-2 small fw-bold">${item.qty}</span>
+                <button class="btn btn-sm btn-light py-0 px-2" onclick="changeCartItemQty(${idx}, 1)">+</button>
+              </div>
+              <div class="fw-bold small">Rs. ${(item.price * item.qty).toLocaleString('en-IN')}</div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function changeCartItemQty(idx, delta) {
+      if (!cart[idx]) return;
+      cart[idx].qty += delta;
+      if (cart[idx].qty <= 0) cart.splice(idx, 1);
+      localStorage.setItem('SOMAIYA_CUSTOMER_CART', JSON.stringify(cart));
+      updateCartDisplay();
+    }
+
+    function removeCartItem(idx) {
+      cart.splice(idx, 1);
+      localStorage.setItem('SOMAIYA_CUSTOMER_CART', JSON.stringify(cart));
+      updateCartDisplay();
+    }
+
+    function openBagDrawer() {
+      const drawerEl = document.getElementById('cartDrawer');
+      const bsDrawer = bootstrap.Offcanvas.getOrCreateInstance(drawerEl);
+      bsDrawer.show();
+    }
+
+    function openCustomerCheckoutModal() {
+      const cartDrawerEl = document.getElementById('cartDrawer');
+      const bsDrawer = bootstrap.Offcanvas.getInstance(cartDrawerEl);
+      if (bsDrawer) bsDrawer.hide();
+
+      const subtotal = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
+      const shipCost = subtotal >= 999 ? 0 : 99;
+      const total = subtotal + shipCost;
+
+      document.getElementById('orderCheckoutTotalAmount').textContent = `Rs. ${total.toLocaleString('en-IN')}`;
+
+      const modalEl = document.getElementById('checkoutOrderModal');
+      const bsModal = bootstrap.Modal.getOrCreateInstance(modalEl);
+      bsModal.show();
+    }
+
+    function handlePlaceCustomerOrder(e) {
+      e.preventDefault();
+      const name = document.getElementById('orderCustName').value.trim();
+      const phone = document.getElementById('orderCustPhone').value.trim();
+      const city = document.getElementById('orderCustCity').value.trim();
+      const addr = document.getElementById('orderCustAddress').value.trim();
+      const payment = document.querySelector('input[name="orderPayment"]:checked').value;
+
+      const subtotal = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
+      const shipCost = subtotal >= 999 ? 0 : 99;
+      const grandTotal = subtotal + shipCost;
+      const orderId = 'SMW-' + Math.floor(100000 + Math.random() * 900000);
+
+      // Decrement inventory in shared storage
+      let db = JSON.parse(localStorage.getItem(DB_KEY) || '[]');
+      cart.forEach(cItem => {
+        const target = db.find(p => p.id === cItem.id);
+        if (target) {
+          target.qty = Math.max(0, (target.qty || 10) - cItem.qty);
+        }
+      });
+      localStorage.setItem(DB_KEY, JSON.stringify(db));
+      products = db;
+
+      // Log sale
+      let salesDb = JSON.parse(localStorage.getItem(SALES_KEY) || '[]');
+      salesDb.unshift({
+        orderId: orderId,
+        customerName: name,
+        mobile: phone,
+        address: `${addr}, ${city}`,
+        items: [...cart],
+        subtotal: subtotal,
+        gst: Math.round(subtotal * 0.18),
+        total: grandTotal,
+        paymentMethod: payment,
+        timestamp: new Date().toISOString(),
+        status: 'Dispatched in 24h',
+        source: 'Online Men\'s Store'
+      });
+      localStorage.setItem(SALES_KEY, JSON.stringify(salesDb));
+
+      // Reset cart
+      cart = [];
+      localStorage.removeItem('SOMAIYA_CUSTOMER_CART');
+      updateCartDisplay();
+      renderProductsGrid();
+
+      const chkModal = bootstrap.Modal.getInstance(document.getElementById('checkoutOrderModal'));
+      if (chkModal) chkModal.hide();
+
+      document.getElementById('successOrderIdDisplay').textContent = orderId;
+      document.getElementById('successOrderBody').innerHTML = `
+        Thank you <strong>${name}</strong>! Your order with <strong>${payment}</strong> has been registered.<br>
+        Dispatched within 24 hours from Bhandup West. Confirmation sent to +91 ${phone}.
+      `;
+      const successModal = bootstrap.Modal.getOrCreateInstance(document.getElementById('orderSuccessDialog'));
+      successModal.show();
+    }
+
+    function setStickyBar(prod) {
+      if (!prod) return;
+      activeProduct = prod;
+      document.getElementById('stickyThumbImg').src = prod.image;
+      document.getElementById('stickyProdTitle').textContent = prod.name;
+      document.getElementById('stickyPriceText').textContent = `Rs. ${prod.price}.00`;
+      document.getElementById('stickyCutPriceText').textContent = `Rs. ${prod.originalPrice || 1249}.00`;
+      document.getElementById('stickySizeBadge').textContent = selectedSize || 'L';
+    }
+
+    function openActiveProductModal() {
+      if (activeProduct) {
+        showProductDetails(activeProduct.id);
+      } else if (products.length > 0) {
+        showProductDetails(products[0].id);
+      }
+    }
+
+    function performSearch(query) {
+      const q = query.toLowerCase().trim();
+      const box = document.getElementById('searchResultsBox');
+      if (!q) {
+        box.innerHTML = `<div class="text-muted small text-center py-3">Type any keyword above to search catalog.</div>`;
+        return;
+      }
+
+      const matches = products.filter(p => 
+        p.name.toLowerCase().includes(q) || 
+        p.category.toLowerCase().includes(q) ||
+        (p.colour && p.colour.toLowerCase().includes(q))
+      );
+
+      if (matches.length === 0) {
+        box.innerHTML = `<div class="text-danger small text-center py-3">No matching men's items found.</div>`;
+        return;
+      }
+
+      box.innerHTML = matches.map(p => `
+        <div class="d-flex align-items-center gap-3 p-2 border-bottom cursor-pointer hover-bg" style="cursor: pointer;" onclick="selectSearchProduct('${p.id}')">
+          <img src="${p.image}" style="width: 45px; height: 45px; border-radius: 6px; object-fit: cover;">
+          <div class="flex-grow-1 overflow-hidden">
+            <div class="fw-bold text-dark small text-truncate">${p.name}</div>
+            <div class="text-muted small">${p.category} &bull; <strong class="text-dark">Rs. ${p.price}.00</strong></div>
+          </div>
+          <i class="fa-solid fa-angle-right text-muted"></i>
+        </div>
+      `).join('');
+    }
+
+    function selectSearchProduct(id) {
+      const searchModal = bootstrap.Modal.getInstance(document.getElementById('searchModal'));
+      if (searchModal) searchModal.hide();
+      showProductDetails(id);
+    }
+
+    function showModalPolicy(title, body) {
+      document.getElementById('policyModalTitle').textContent = title;
+      document.getElementById('policyModalBody').innerHTML = body;
+      const modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('policyModal'));
+      modal.show();
+    }
+
+    function handleCouponSubscribe() {
+      const email = document.getElementById('newsletterEmailInput').value.trim();
+      const msg = document.getElementById('newsletterSuccessMsg');
+      if (!email || !email.includes('@')) {
+        alert('Please enter a valid email address.');
+        return;
+      }
+      msg.textContent = '🎉 ₹150 OFF Coupon code SOMAIYA150 unlocked! Check your inbox.';
+      msg.style.display = 'block';
+      document.getElementById('newsletterEmailInput').value = '';
+    }
+
+    window.addEventListener('DOMContentLoaded', initStore);
+  </script>
+</body>
+</html>
